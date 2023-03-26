@@ -1,0 +1,134 @@
+{% load i18n %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ja" class="{% block html_class %}no-js{% endblock %}">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>DR.LOHACELL</title>
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="ダイエット 漢方薬 DR.LOHACELL">
+    <meta property="og:url" content="https://www.jayeon-hanbang.com">
+    <meta property="og:image" content="https://https://i.gr-tn.co.kr/jayeon_2020/images/og_1300_700_2.png">
+    <meta property="og:description" content="사람을 먼저 생각하는 자연과한의원의 노력. 평일 21시까지 진료. 다이어트한의원, 다이어트한약, 한방다이어트, 지방사약 전국네트워크 32개지점.">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@lohacell">
+    <meta name="twitter:title" content="다이어트한약 한방 자연과한의원!">
+    <meta name="twitter:description" content="사람을 먼저 생각하는 자연과한의원의 노력. 평일 21시까지 진료. 다이어트한의원, 다이어트한약, 한방다이어트, 지방사약 전국네트워크 32개지점.">
+    <meta name="twitter:image" content="https://i.gr-tn.co.kr/jayeon_2020/images/og_600_600_2.png">
+    <meta name="description" content="사람을 먼저 생각하는 자연과한의원의 노력. 평일 21시까지 진료. 다이어트한의원, 다이어트한약, 한방다이어트, 지방사약 전국네트워크 32개지점." >
+    <meta name="keywords" content="">
+    <meta name="_token" content="KEFt2xgRo0W8kagPlm1Dmyjm5jPAVBcbkyOd4GOl">
+    <meta name="facebook-domain-verification" content="vjdirzs6pw78lehsq2c3p71nv6996s" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/innks/NanumSquareRound/master/nanumsquareround.min.css">
+    <link rel="stylesheet" href='https://jayeon-hanbang.com/css/common.css'>
+    <link rel="stylesheet" href='https://jayeon-hanbang.com/css/main.css?v=230302'>
+    <link rel="stylesheet" href='https://jayeon-hanbang.com/css/animate.css'>
+    <link rel="stylesheet" href='https://jayeon-hanbang.com/css/contents.css'>
+    <link rel="stylesheet" href='https://jayeon-hanbang.com/css/cocntents_jw.css'>
+    <link rel="stylesheet" href='https://jayeon-hanbang.com/css/media.css?v=230302'>
+    <link rel="stylesheet" href='https://jayeon-hanbang.com/js/jquery.ui.1.21.1/jquery-ui.min.css'>
+    <link rel="stylesheet" href='https://jayeon-hanbang.com/js/lightbox/css/lightbox.min.css'>
+    <link rel="stylesheet" href='https://jayeon-hanbang.com/js/jquery.bxslider.css'>
+    <link rel="stylesheet" href='https://jayeon-hanbang.com/js/owl/owl.carousel.min.css'>
+    <link rel="stylesheet" href='https://jayeon-hanbang.com/js/owl/owl.theme.default.min.css'>
+    <link rel="stylesheet" href="https://jayeon-hanbang.com/js/jquery.ui.1.21.1/jquery-ui.min.css">
+    <link rel="stylesheet" href="{% static 'oscar/css/styles_lohacell' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css"/>
+
+    <link rel="apple-touch-icon" sizes="57x57" href="https://i.gr-tn.co.kr/lohacell/public/favicon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="https://i.gr-tn.co.kr/lohacell/public/favicon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="https://i.gr-tn.co.kr/lohacell/public/favicon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="https://i.gr-tn.co.kr/lohacell/public/favicon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="https://i.gr-tn.co.kr/lohacell/public/favicon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="https://i.gr-tn.co.kr/lohacell/public/favicon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="https://i.gr-tn.co.kr/lohacell/public/favicon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="https://i.gr-tn.co.kr/lohacell/public/favicon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://i.gr-tn.co.kr/lohacell/public/favicon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="https://i.gr-tn.co.kr/lohacell/public/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://i.gr-tn.co.kr/lohacell/public/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="https://i.gr-tn.co.kr/lohacell/public/favicon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://i.gr-tn.co.kr/lohacell/public/favicon/favicon-16x16.png">
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
+    <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
+
+    
+    <script>
+      WebFont.load({
+        google: {
+          families: ['Noto Sans KR']
+        }
+      });
+    </script>
+    <!-- Google Tag Manager -->
+    <script>
+      (function(w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({
+          'gtm.start': new Date().getTime(),
+          event: 'gtm.js'
+        });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src =
+          'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', 'GTM-NKCGWFT');
+    </script>
+    <!-- End Google Tag Manager -->
+
+    <!-- Google tag (gtag.js) --> <script async src="https://www.googletagmanager.com/gtag/js?id=AW-10816797480"></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'AW-10816797480'); </script>
+
+    <!-- Facebook Pixel Code -->
+    <script>
+      ! function(f, b, e, v, n, t, s) {
+        if (f.fbq) return;
+        n = f.fbq = function() {
+          n.callMethod ?
+            n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+        };
+        if (!f._fbq) f._fbq = n;
+        n.push = n;
+        n.loaded = !0;
+        n.version = '2.0';
+        n.queue = [];
+        t = b.createElement(e);
+        t.async = !0;
+        t.src = v;
+        s = b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t, s)
+      }(window, document, 'script',
+        'https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init', '746650625872033');
+      fbq('track', 'PageView');
+
+        </script>
+    <noscript>
+      <img height="1" width="1" src="https://www.facebook.com/tr?id=746650625872033&ev=PageView&noscript=1" />
+    </noscript>
+    <!-- End Facebook Pixel Code -->
+
+    <script>
+      startTime = new Date();
+    </script>
+    <meta name="naver-site-verification" content="cb9fe6e4220324a89355d00b4e7f04527b0ab6dc" />
+    <meta name="google-site-verification" content="omIL2mEwFmvlMs75SY6bPJrDYG9L7QfSZg5XpM6ca4I" />
+    <link rel="canonical" href="https://www.jayeon-hanbang.com/">
+
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NKCGWFT" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <script type="text/javascript" src="//wcs.naver.net/wcslog.js"></script>
+  </head>
+
+  <body>
+    {% block layout %}{% endblock %}
+  </body>
+</html>

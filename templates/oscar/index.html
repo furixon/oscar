@@ -1,0 +1,2235 @@
+{% extends "oscar/base_lohacell.html" %}
+{% load static %}
+
+{% block layout %}
+<div class="wrap">
+  {% include "oscar/header.html" %}
+
+  <div class="container">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-mousewheel/3.1.13/jquery.mousewheel.min.js"></script>
+    <style type="text/css">
+      .visual_slider .slider_wrap .vis_slide .sl01 {
+        background-image: url("{% static 'oscar/img/ui/banner_main_01.jpg' %}");
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+      .visual_slider .slider_wrap .vis_slide .sl02 {
+        background-image: url("{% static 'oscar/img/ui/banner_main_02.jpg' %}");
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+      .sl03 {
+        background-image: url("{% static 'oscar/img/ui/banner_main_03.jpg' %}");
+        
+      }
+      .section1 .event_area .contact_tab > ul .tab_btn {
+        float: left;
+        box-sizing: border-box;
+        width: 100%;
+        padding: 18px 0px;
+        border: 1px solid #f1f1f1;
+        font-size: 17px;
+        font-weight: 400;
+        text-align: center;
+        transition: all 0.5s;
+        -webkit-transition: all 0.5s;
+        -moz-transition: all 0.5s;
+        -ms-transition: all 0.5s;
+        cursor: pointer;
+      }
+      .section1 .event_area .contact_tab > ul .tab_btn.active {
+          color: #fff;
+          background-color: #2c665a;
+      }
+      .section5 .influence_wrap .infulucont01 {
+          background-image: url("{% static 'oscar/img/ui/inf_capsule_01.jpg' %}");
+      }
+      .section5 .influence_wrap .infulucont02 {
+          background-image: url("{% static 'oscar/img/ui/inf_mimi_01.jpg' %}");
+      }
+      .section5 .influence_wrap .infulucont03 {
+          background-image: url("{% static 'oscar/img/ui/inf_capsule_02.jpg' %}");
+      }
+      .section5 .influence_wrap .infulucont04 {
+          background-image: url("{% static 'oscar/img/ui/inf_mimi_02.jpg' %}");
+      }
+      .section5 .influence_wrap .infulucont05 {
+          background-image: url("{% static 'oscar/img/ui/inf_mimi_05.jpg' %}");
+      }
+      .section5 .influence_wrap .infulucont06 {
+          background-image: url("{% static 'oscar/img/ui/inf_mimi_03.jpg' %}");
+      }
+      .section5 .influence_wrap .infulucont07 {
+          background-image: url("{% static 'oscar/img/ui/inf_mimi_06.jpg' %}");
+      }
+      .section5 .influence_wrap .infulucont08 {
+          background-image: url("{% static 'oscar/img/ui/inf_mimi_04.jpg' %}");
+      }
+      .section5 .influence_wrap .infulucont09 {
+          background-image: url("{% static 'oscar/img/ui/inf_capsule_03.jpg' %}");
+      }
+      .section5 .influence_wrap .infulucont10 {
+          background-image: url("{% static 'oscar/img/ui/inf_capsule_04.jpg' %}");
+      }
+    </style>
+
+<!-- 비쥬얼슬라이드 -->
+<div class="visual_slider">
+  <div class="slider_wrap">
+    <div class="vis_slide">
+      <ul class="vis">
+       <li class="slide_content sl01">
+          <a href="/detox_capsule">
+            <div class="slide_align">
+              <div class="slide_left">
+                <div class="m_align">
+                  <h2 class="subtit lineseed-regular">ハンボンで終わる</h2>
+                  <h2 class="bigtit lineseed-bold">オフタイムカプセルダイエット</h2>
+                  <p class="txt lineseed-regular">100%<span class="zero-letter-spacing">漢方薬</span> 高濃縮ダイエットカプセル</p>
+                </div>
+              </div>
+            </div>
+          </a>
+        </li>
+        <li class="slide_content sl02">
+          <a href="/detox_mimi" class="na-round">
+            <div class="slide_align">
+              <div class="slide_left">
+                <div class="m_align">
+                  <h2 class="subtit lineseed-regular">耐え難い食欲、</h2>
+                  <h2 class="bigtit lineseed-bold">ブロックします。</h2>
+                  <p class="txt lineseed-regular">保薬成分まで盛り込んだプレミアム湯薬</p>
+                </div>
+              </div>
+            </div>
+          </a>
+        </li>
+        <li class="slide_content sl03">
+          <a href="" class="na-round">
+            <div class="slide_align">
+              <div class="slide_left">
+                <div class="m_align">
+                  <h2 class="bigtit lineseed-regular"><strong>体重減量用</strong> 組成物</h2>
+                  <h2 class="bigtit lineseed-bold">3種特許</h2>
+                  <p class="txt lineseed-regular"><span class="mobile-hide">20年ノウハウ </span>あなたの食事療法を担当します。</p>
+                </div>
+              </div>
+            </div>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+<!-- //비주얼슬라이드 -->
+<script>
+  $(document).ready(function() {
+    // visual slide
+    var visualSlideTest = $('.vis_slide .vis').bxSlider({
+      auto: true,
+      infiniteLoop: true,
+      minSlides: 1,
+      maxSlides: 1,
+      // startSlide:0,
+      pager: true,
+      controls: true,
+      touchEnabled: true,
+      useCSS: false,
+      onSlideAfter: function() {
+        // visualSlideTest.stopAuto();
+        // visualSlideTest.startAuto();
+      }
+    });
+
+  });
+</script>
+
+<!-- section1 -->
+<div class="section section1">
+  <div class="inner">
+    <div class="event_area">
+
+    <div class="event_slider">
+        <div class="slider_wrap">
+          <div class="event_slide">
+            <ul class="event">
+              <li>
+                <div class="wow fadeInUp event_tab" data-wow-duration="0.5s">
+                  <a href="/detox_capsule"><img src="{% static 'oscar/img/ui/detox_capsule.png' %}" alt=""></a>
+                  <div class="tag">EVENT</div>
+                  <div class="title">[SALE] 24時間ダイエット</div>
+                </div>
+              </li>
+              <li>
+                <div class="wow fadeInUp event_tab" data-wow-duration="1s">
+                  <a href="/detox_mimi"><img src="{% static 'oscar/img/ui/detox_mimi.png' %}" alt=""></a>
+                  <div class="tag">EVENT</div>
+                  <div class="title">[SALE] 美味湯 プレミアムダイエット</div>
+                </div>
+              </li>
+              <li>
+                <div class="wow fadeInUp event_tab" data-wow-duration="1.5s">
+                  <a href="/detox_capsule"><img src="{% static 'oscar/img/ui/detox_capsule2.jpg' %}" alt=""></a>
+                  <div class="tag">EVENT</div>
+                  <div class="title">[SALE] 管理パッケージプログラム</div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="contact_tab wow fadeInUp" data-wow-delay="0.4s" data-wow-duration="1s">
+        <ul class="tab_btnbox">
+          <!-- <li class="tab_btn active">온라인 상담</li> -->
+          <li class="tab_btn active">お知らせ</li>
+        </ul>
+        <div class="tab_cont">
+<!--           <div class="cont active">
+            <div class="more"><a href="/online/counsel" alt="더보기">more <img src="https://i.gr-tn.co.kr/jayeon_2020/images/ev_arrow.png" alt=""></a></div>
+            <ul class="cont_list">
+                            <li>
+                <a href="/online/counsel">
+                  <span class="name">비대면 상담 신청합니다</span>
+                  <span class="data">23.03.19</span>
+                </a>
+              </li>
+                            <li>
+                <a href="/online/counsel">
+                  <span class="name">다이어트</span>
+                  <span class="data">23.03.19</span>
+                </a>
+              </li>
+                            <li>
+                <a href="/online/counsel">
+                  <span class="name">다이어트 한약캡슐</span>
+                  <span class="data">23.03.19</span>
+                </a>
+              </li>
+                            <li>
+                <a href="/online/counsel">
+                  <span class="name">비대면 상담 신청합니다.</span>
+                  <span class="data">23.03.19</span>
+                </a>
+              </li>
+                            <li>
+                <a href="/online/counsel">
+                  <span class="name">다이어트한약</span>
+                  <span class="data">23.03.19</span>
+                </a>
+              </li>
+                          </ul>
+          </div> -->
+          <div class="cont active">
+            <div class="more"><a href="/event_notice" alt="더보기">more <img src="https://i.gr-tn.co.kr/jayeon_2020/images/ev_arrow.png" alt=""></a></div>
+            <ul class="cont_list">
+                            <li>
+                <a href="/event_notice/163">
+                   <span class="name"> 12月の短縮医療ガイド</span>
+                   <span class="data">22.12.10</span>
+                 </a>
+               </li>
+                             <li>
+                 <a href="/event_notice/162">
+                   <span class="name"> [グランドオープン]原州店、全州店オープン予定</span>
+                   <span class="data">22.10.14</span>
+                 </a>
+               </li>
+                             <li>
+                 <a href="/event_notice/161">
+                   <span class="name">代替祝日の正常診療</span>
+                   <span class="data">22.09.27</span>
+                 </a>
+               </li>
+                             <li>
+                 <a href="/event_notice/160">
+                   <span class="name"> 2022チュソク休暇案内</span>
+                   <span class="data">22.09.08</span>
+                 </a>
+               </li>
+                             <li>
+                 <a href="/event_notice/159">
+                   <span class="name">夏季休暇休暇案内</span>
+                   <span class="data">22.07.27</span>
+                </a>
+              </li>
+                          </ul>
+          </div>
+        </div>
+        <div class="counsel_link"><a href="/online/counsel">문의하기</a></div>
+      </div>      
+    </div>
+  </div>
+</div>
+<!-- //section1 -->
+
+<!-- setion2 -->
+<!-- _bak_main.html에 기존 소스 옮겨놈 -->
+<div class="section section2">
+  <div class="prd_slide_wrap" id="prd_slide_wrap">
+    <ul class="prd_slide" id="scrollr">
+      <li>
+        <div class="prd_img"><a href="/detox_capsule"><img src="{% static 'oscar/img/ui/banner_grid_01.jpg' %}" alt=""></a></div>
+      </li>
+      <li>
+        <div class="prd_img"><a href="/detox_mimi"><img src="{% static 'oscar/img/ui/banner_grid_02.jpg' %}" alt=""></a></div>
+      </li>
+      <li>
+        <div class="prd_img"><a href="/detox_capsule"><img src="{% static 'oscar/img/ui/banner_grid_03.jpg' %}" alt=""></a></div>
+      </li>
+      <li>
+        <div class="prd_img"><a href="/detox_capsule"><img src="{% static 'oscar/img/ui/banner_grid_04.jpg' %}" alt=""></a></div>
+      </li>
+      <li>
+        <div class="prd_img"><a href="/detox_capsule"><img src="{% static 'oscar/img/ui/banner_grid_06.jpg' %}" alt=""></a></div>
+      </li>
+      <li>
+        <div class="prd_img"><a href="/detox_capsule"><img src="{% static 'oscar/img/ui/banner_grid_01.jpg' %}" alt=""></a></div>
+      </li>
+      <li>
+        <div class="prd_img"><a href="/detox_mimi"><img src="{% static 'oscar/img/ui/banner_grid_02.jpg' %}" alt=""></a></div>
+      </li>
+      <li>
+        <div class="prd_img"><a href="/detox_capsule"><img src="{% static 'oscar/img/ui/banner_grid_03.jpg' %}" alt=""></a></div>
+      </li>
+      <li>
+        <div class="prd_img"><a href="/detox_capsule"><img src="{% static 'oscar/img/ui/banner_grid_04.jpg' %}" alt=""></a></div>
+      </li>
+      <li>
+        <div class="prd_img"><a href="/detox_capsule"><img src="{% static 'oscar/img/ui/banner_grid_06.jpg' %}" alt=""></a></div>
+      </li>
+    </ul>
+  </div>
+</div>
+<!-- //section2 -->
+
+
+<!-- section3 -->
+<div class="section section3">
+  <div class="inner review">
+    <ul>
+      <li class="photo_review">
+        <div class="be_af_box">
+          <div class="photowslider">
+            <div class="be_af_slide owl-carousel owl-theme">
+              <div class="be_af_slide_cont">
+                <a href="/real_review">
+                  <span><img src="{% static 'oscar/img/ui/before_after_01.jpg' %}" class="before"></span>
+                  <span><img src="{% static 'oscar/img/ui/before_after_02.jpg' %}" class="after"></span>
+                </a>
+              </div>
+              <!-- <div class="be_af_slide_cont">
+                <a href="/real/photo">
+                  <span><img src="https://i.gr-tn.co.kr/jayeon_2020/images/4_before.jpg" class="before"></span>
+                  <span><img src="https://i.gr-tn.co.kr/jayeon_2020/images/4_after.jpg" class=""></span>
+                </a>
+              </div> -->
+            </div>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
+<!-- //section3 -->
+
+<!-- section4 -->
+<div class="section section4">
+  <div class="inner">
+    <h2 class="main_section_tit">自然と韓医院の約束</h2>
+    <div class="promise_wrap">
+      <ul class="promise_list">
+        <li class="wow fadeInUp" data-wow-duration="1s">
+          <div class="promise_cont">
+            <div class="promiseimg"><img src="https://i.gr-tn.co.kr/jayeon_2020/images/promise_icon01.png" alt=""></div>
+            <div class="promisetxt">
+              <h3>簡単な食事</h3>
+              <p>簡単で便利なダイエットのために絶えず研究開発します。</p>
+            </div>
+          </div>
+        </li>
+        <li class="wow fadeInUp" data-wow-delay="0.2s" data-wow-duration="1s">
+          <div class="promise_cont">
+            <div class="promiseimg"><img src="https://i.gr-tn.co.kr/jayeon_2020/images/promise_icon02.png" alt=""></div>
+            <div class="promisetxt">
+              <h3>迅速な効果</h3>
+              <p>20年ノウハウを盛り込んで減量成功をお手伝いします。</p>
+            </div>
+          </div>
+        </li>
+        <li class="wow fadeInUp" data-wow-delay="0.4s" data-wow-duration="1s">
+          <div class="promise_cont">
+            <div class="promiseimg"><img src="https://i.gr-tn.co.kr/jayeon_2020/images/promise_icon03.png" alt=""></div>
+            <div class="promisetxt">
+              <h3>安全な減量追求</h3>
+              <p style="font-size:15px">実証済みの漢方薬と1:1の合わせ処方で安全な減量を追求します。</p>
+            </div>
+          </div>
+        </li>
+        <li class="wow fadeInUp" data-wow-delay="0.6s" data-wow-duration="1s">
+          <div class="promise_cont">
+            <div class="promiseimg"><img src="https://i.gr-tn.co.kr/jayeon_2020/images/promise_icon04.png" alt=""></div>
+            <div class="promisetxt">
+              <h3>価格までの顧客満足</h3>
+              <p>リーズナブルな価格をお約束いたします。</p>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+<!-- //section4 -->
+
+<!-- section5 -->
+<div class="section section5">
+  <div class="inner">
+    <div class="influence_wrap">
+      <div class="influence_left mar_right">
+        <div class="influence_l_top">
+          <ul class="influence_list01">
+            <li class="infulucont01 influence_cont wow fadeInDown mar_right mar_btm" data-wow-duration="1s">
+              <a href="/detox_capsule">
+                <div class="overlay">
+                  <span>オフタイムカプセル</span>
+                </div>
+              </a>
+            </li>
+            <li class="infulucont02 influence_cont wow fadeInDown mar_right mar_btm" data-wow-delay="0.2s" data-wow-duration="1s">
+              <a href="/detox_mimi">
+                <div class="overlay">
+                  <span>美味湯薬</span>
+                </div>
+              </a>
+            </li>
+            <li class="infulucont03 influence_cont wow fadeInDown mar_btm" data-wow-delay="0.4s" data-wow-duration="1s">
+              <a href="/detox_capsule">
+                <div class="overlay">
+                  <span>オフタイムカプセル</span>
+                </div>
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="influence_l_bot">
+          <div class="l_bot_left">
+            <ul class="influence_list02">
+              <li class="infulucont04 influence_cont wow fadeInLeft mar_btm mar_right" data-wow-duration="1s">
+                <a href="/detox_mimi">
+                  <div class="overlay">
+                    <span>美味湯薬</span>
+                  </div>
+                </a>
+              </li>
+              <li class="infulucont05 influence_cont wow fadeInLeft mar_right" data-wow-delay="0.2s" data-wow-duration="1s">
+                <a href="/detox_mimi">
+                  <div class="overlay">
+                    <span>美味湯薬</span>
+                  </div>
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div class="l_bot_right">
+            <ul class="influence_list03">
+              <li class="infulucont06 influence_cont wow fadeIn size_big" data-wow-duration="3s">
+                <a href="/detox_mimi">
+                  <div class="overlay">
+                    <span>美味湯薬</span>
+                  </div>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="influence_right">
+        <div class="influence_right_fl_wrap">
+          <div class="influence_right_fl_left">
+            <ul class="influence_list04">
+              <li class="infulucont07 influence_cont wow fadeIn mar_btm " data-wow-duration="1s">
+                <a href="/detox_mimi">
+                  <div class="overlay">
+                    <span>美味湯薬</span>
+                  </div>
+                </a>
+              </li>
+              <li class="infulucont08 influence_cont wow fadeIn mar_btm " data-wow-delay="0.2s" data-wow-duration="1s">
+                <a href="/detox_mimi">
+                  <div class="overlay">
+                    <span>美味湯薬</span>
+                  </div>
+                </a>
+              </li>
+              <li class="infulucont09 influence_cont wow fadeIn " data-wow-delay="0.4s" data-wow-duration="1s">
+                <a href="/detox_capsule">
+                  <div class="overlay">
+                    <span>オフタイムカプセル</span>
+                  </div>
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div class="influence_right_fl_right mar_left">
+            <ul class="influence_list05">
+              <li class="infulucont10 influence_cont wow fadeInRight size_big fl_n mar_btm" data-wow-duration="1s">
+                <a href="/detox_capsule">
+                  <div class="overlay">
+                    <span>オフタイムカプセル</span>
+                  </div>
+                </a>
+              </li>
+              <li class="infulucont11 influence_cont wow fadeInUp mar_right" data-wow-duration="1s">
+                <a href="/detox_mimi">
+                  <div class="overlay">
+                    <span>美味湯薬</span>
+                  </div>
+                </a>
+              </li>
+              <li class="infulucont12 influence_cont wow fadeIn" data-wow-delay="0.3s" data-wow-duration="2s">
+                <a href="/detox_mimi">
+                  <div class="overlay">
+                    <span>美味湯薬</span>
+                  </div>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- //section5 -->
+<div class="section section6">
+  <div class="network_wrap inner">
+    <h2 class="network_tit">ロハセル韓方医院 NETWORK</h2>
+    <p class="network_txt">ロハセル韓医院の管理プログラムを今や日本でも会うことができます。</p>
+    <div class="network_tab">
+      <ul class="tab">
+         <li class="network_list  active ">
+          <a href="javascript:void(0)">江南本店</a>
+         </li>
+         <li class="network_list">
+           <a href="javascript:void(0)">ノーマン本店</a>
+         </li>
+      </ul>
+      <div class="network_cont_wrap">
+                <div class="network_cont  active ">
+          <div class="office_info">
+            <div class="info_align">
+              <div class="of_info_top">
+                <h3 class="info_tit">ロハセル韓方医院 <span>江南本店</span></h3>
+                <h3 class="office_call">02.415.4475</h3>
+              </div>
+              <div class="of_info_mid">
+                <ul class="time_list">
+                  <li>
+                     <span class="day day1">月/水/金</span>
+                     <span class="time">AM <strong> 10:00 </strong>〜PM <strong> 09:00 </strong> </span>
+                   </li>
+                   <li>
+                     <span class="day day2">火/木</span>
+                     <span class="time">PM <strong> 02:00 </strong>〜PM <strong> 09:00 </strong> </span>
+                   </li>
+                   <li>
+                     <span class="day day3">土曜日</span>
+                     <span class="time">AM <strong> 10:00 </strong>〜PM <strong> 04:00 </strong> </span>
+                   </li>
+                   <li>
+                     <span class="day day4">ランチタイム<br>
+                       <span class="day5">(月/水/金）</span>
+                     </span>
+                     <span class="time">PM <strong> 01:00 </strong>〜PM <strong> 02:00 </strong> </span>
+                   </li>
+                 </ul>
+               </div>
+               <div class="of_info_bot">
+                 <p>&#42; 日曜日/祝日は休業です。</p>
+               </div>
+            </div>
+          </div>
+          <div class="footer_map">
+                        <div id="daumRoughmapContainer1586237574162" class="root_daum_roughmap root_daum_roughmap_landing"></div>
+                        <script charset="UTF-8" class="daum_roughmap_loader_script" src="https://ssl.daumcdn.net/dmaps/map_js_init/roughmapLoader.js"></script>
+                        <script charset="UTF-8">
+              $(window).on('load', function() {
+                new daum.roughmap.Lander({
+                  "timestamp": "1586237574162",
+                  "key": "xthk",
+                  "mapWidth": "640",
+                  "mapHeight": "400"
+                }).render();
+              });
+            </script>
+            <p class="address"><span>ソウル市江南区駅三洞822-5大建ビル7階</span></p>
+          </div>
+        </div>
+               
+                <div class="network_cont ">
+          <div class="office_info">
+            <div class="info_align">
+              <div class="of_info_top">
+                <h3 class="info_tit">ロハセル韓方医院 <span>ノーマン本店</span></h3>
+                <h3 class="office_call">02.952.9930</h3>
+              </div>
+              <div class="of_info_mid">
+                <ul class="time_list">
+                  <li>
+                     <span class="day day1">月/水/金</span>
+                     <span class="time">AM <strong> 10:00 </strong>〜PM <strong> 09:00 </strong> </span>
+                   </li>
+                   <li>
+                     <span class="day day2">火/木</span>
+                     <span class="time">PM <strong> 02:00 </strong>〜PM <strong> 09:00 </strong> </span>
+                   </li>
+                   <li>
+                     <span class="day day3">土曜日</span>
+                     <span class="time">AM <strong> 10:00 </strong>〜PM <strong> 04:00 </strong> </span>
+                   </li>
+                   <li>
+                     <span class="day day4">ランチタイム<br>
+                       <span class="day5">(月/水/金）</span>
+                     </span>
+                     <span class="time">PM <strong> 01:00 </strong>〜PM <strong> 02:00 </strong> </span>
+                   </li>
+                 </ul>
+               </div>
+               <div class="of_info_bot">
+                 <p>&#42; 日曜日/祝日は休業です。</p>
+              </div>
+            </div>
+          </div>
+          <div class="footer_map">
+                        <div id="daumRoughmapContainer1586244537910" class="root_daum_roughmap root_daum_roughmap_landing"></div>
+                        <script charset="UTF-8">
+              $(window).on('load', function() {
+                new daum.roughmap.Lander({
+                  "timestamp": "1586244537910",
+                  "key": "xtns",
+                  "mapWidth": "640",
+                  "mapHeight": "360"
+                }).render();
+              });
+            </script>
+                        <p class="address"><span>ソウルノウォン区上渓路63-7チョンウヴィラ3階301号</span></p>
+          </div>
+        </div>
+               
+              </div>
+    </div>
+  </div>
+</div>
+<div id="divpop18" style="position: absolute; top: 0px; z-index: 99999; margin-left: 0px;">
+  <ul class="popupWrap">
+    <li class="popupImg">
+      <div class="popupslide-wrap">
+        <ul class="popupslide">
+            </ul>
+</div>
+</li>
+<li class="popupCheck">
+  <input type="checkbox" id="chkbox18" value="checkbox18"> 오늘 하루 이 창을 열지 않음
+  <a href="javascript:closeWin('divpop18', 'chkbox18', 'maindiv18');"><b>[ X 닫기]</b></a>&nbsp;
+</li>
+</ul>
+</div>
+<style>
+  .popupWrap {
+    width: 500px;
+  }
+
+  .popupWrap .bx-wrapper .bx-pager {
+    bottom: 5px;
+  }
+
+  .popupWrap .bx-wrapper .bx-pager.bx-default-pager a {
+    border: 1px solid #888;
+    background: none;
+  }
+
+  .popupWrap .bx-wrapper .bx-pager.bx-default-pager a.active {
+    background: #888
+  }
+
+  .popupWrap .bx-wrapper a {
+    display: block;
+  }
+
+  @media  screen and (max-width: 990px) {
+    .popupWrap {
+      width: 100%;
+    }
+  }
+</style>
+<!-- layer popup -->
+<script language="Javascript">
+  function setCookie01(name, value, expiredays) {
+    var todayDate = new Date();
+    todayDate.setDate(todayDate.getDate() + expiredays);
+    document.cookie = name + "=" + escape(value) + "; path=/; expires=" + todayDate.toGMTString() + ";"
+  }
+
+  function closeWin(div, chk, cookname) {
+    if (document.getElementById(chk).checked) {
+      setCookie01(cookname, "done", 1);
+    }
+    document.getElementById(div).style.visibility = "hidden";
+  }
+
+  function open_pop() {
+
+    if (notice_getCookie("maindiv18") == "done" || $('.popupslide li').length == 0) {
+      $("#divpop18").hide();
+    } else {
+      $("#divpop18").show();
+      if ($('.popupslide li').length > 1) {
+        $('.popupslide').bxSlider({
+          auto: true,
+          pause: 2500,
+          speed: 600,
+          infiniteLoop: true,
+          controls: false,
+          maxSlides: 1,
+          minSlides: 1,
+          startSlide: 0,
+          pager: true,
+          touchEnabled: true,
+          useCSS: false,
+          onSlideAfter: function() {
+            // visualSlideTest.stopAuto();
+            // visualSlideTest.startAuto();
+          }
+        });
+        console.log('dd')
+      } else {
+        // $("#divpop18").hide();
+      }
+    }
+  }
+  $(document).ready(function() {
+    open_pop();
+
+    $('.bg-close-cover').click(function() {
+      var target = $(this).attr('target');
+      $(this).parents(target).hide();
+    });
+
+    var eventSlide = $('.event_slide .event').bxSlider({
+      mode: 'horizontal',// 가로 방향 수평 슬라이드
+   speed: 500,        // 이동 속도를 설정
+   pager: false,      // 현재 위치 페이징 표시 여부 설정
+   pause: 3000, 
+   moveSlides: 1,     // 슬라이드 이동시 개수
+   slideWidth: 600,   // 슬라이드 너비
+   minSlides: 2,      // 최소 노출 개수
+   maxSlides: 2,      // 최대 노출 개수
+   slideMargin: 5,    // 슬라이드간의 간격
+   auto: true,        // 자동 실행 여부
+   controls: false    // 이전 다음 버튼 노출 여부
+    });
+
+
+  });
+
+  function notice_getCookie(name) {
+    var nameOfCookie = name + "=";
+    var x = 0;
+    while (x <= document.cookie.length) {
+      var y = (x + nameOfCookie.length);
+      if (document.cookie.substring(x, y) == nameOfCookie) {
+        if ((endOfCookie = document.cookie.indexOf(";", y)) == -1)
+          endOfCookie = document.cookie.length;
+        return unescape(document.cookie.substring(y, endOfCookie));
+      }
+      x = document.cookie.indexOf(" ", x) + 1;
+      if (x == 0) break;
+    }
+    return "";
+  }
+
+  // if ( $("#divpop18").size() > 0 ) {
+  //     cookiedata = document.cookie;
+  //     if ( cookiedata.indexOf("maindiv18=done") < 0 ){
+  //         document.getElementById('divpop18').style.display = "";
+  //     }
+  // }
+</script>
+  </div>
+
+  {% include "oscar/footer.html" %}
+
+<script type="text/javascript">
+  $(function() {
+
+    var visitor_log = function() {
+
+      var targetURL = "https://jayeon-hanbang.com/visitor_log"
+      var sendData = {
+        '_token': 'KEFt2xgRo0W8kagPlm1Dmyjm5jPAVBcbkyOd4GOl'
+      };
+
+      $.ajax({
+        type: "POST",
+        dataType: "json",
+        url: targetURL,
+        data: sendData,
+        success: function(data) {},
+        error: function(request, status, error) {
+          console.log(request + " : " + status + " : " + error);
+        }
+      });
+
+    }
+
+    visitor_log();
+    endTime = new Date();
+    var timeDiff = endTime - startTime;
+  });
+</script>
+
+
+<!-- AceCounter Log Gathering Script V.7.5.AMZ2017020801 -->
+<!-- <script language='javascript'>
+  var _AceGID = (function() {
+    var Inf = ['gtp16.acecounter.com', '8080', 'AH2A39643761935', 'AW', '0', 'NaPm,Ncisy', 'ALL', '0'];
+    var _CI = (!_AceGID) ? [] : _AceGID.val;
+    var _N = 0;
+    var _T = new Image(0, 0);
+    if (_CI.join('.').indexOf(Inf[3]) < 0) {
+      _T.src = (location.protocol == "https:" ? "https://" + Inf[0] : "http://" + Inf[0] + ":" + Inf[1]) + '/?cookie';
+      _CI.push(Inf);
+      _N = _CI.length;
+    }
+    return {
+      o: _N,
+      val: _CI
+    };
+  })();
+  var _AceCounter = (function() {
+    var G = _AceGID;
+    var _sc = document.createElement('script');
+    var _sm = document.getElementsByTagName('script')[0];
+    if (G.o != 0) {
+      var _A = G.val[G.o - 1];
+      var _G = (_A[0]).substr(0, _A[0].indexOf('.'));
+      var _C = (_A[7] != '0') ? (_A[2]) : _A[3];
+      var _U = (_A[5]).replace(/\,/g, '_');
+      _sc.src = (location.protocol.indexOf('http') == 0 ? location.protocol : 'http:') + '//cr.acecounter.com/Web/AceCounter_' + _C + '.js?gc=' + _A[2] + '&py=' + _A[4] + '&gd=' + _G + '&gp=' + _A[1] + '&up=' + _U + '&rd=' + (new Date().getTime());
+      _sm.parentNode.insertBefore(_sc, _sm);
+      return _sc.src;
+    }
+  })();
+</script>
+<noscript><img src='http://gtp16.acecounter.com:8080/?uid=AH2A39643761935&je=n&' border='0' width='0' height='0' alt=''></noscript> -->
+<!-- AceCounter Log Gathering Script End -->
+
+<!-- AceCounter Log Gathering Script V.8.0.2019080601 -->
+<script language='javascript'>
+  var _AceGID = (function() {
+    var Inf = ['gtp19.acecounter.com', '8080', 'BH1A45526089918', 'AW', '0', 'NaPm,Ncisy', 'ALL', '0'];
+    var _CI = (!_AceGID) ? [] : _AceGID.val;
+    var _N = 0;
+    var _T = new Image(0, 0);
+    if (_CI.join('.').indexOf(Inf[3]) < 0) {
+      _T.src = "https://" + Inf[0] + '/?cookie';
+      _CI.push(Inf);
+      _N = _CI.length;
+    }
+    return {
+      o: _N,
+      val: _CI
+    };
+  })();
+  var _AceCounter = (function() {
+    var G = _AceGID;
+    var _sc = document.createElement('script');
+    var _sm = document.getElementsByTagName('script')[0];
+    if (G.o != 0) {
+      var _A = G.val[G.o - 1];
+      var _G = (_A[0]).substr(0, _A[0].indexOf('.'));
+      var _C = (_A[7] != '0') ? (_A[2]) : _A[3];
+      var _U = (_A[5]).replace(/\,/g, '_');
+      _sc.src = 'https:' + '//cr.acecounter.com/Web/AceCounter_' + _C + '.js?gc=' + _A[2] + '&py=' + _A[4] + '&gd=' + _G + '&gp=' + _A[1] + '&up=' + _U + '&rd=' + (new Date().getTime());
+      _sm.parentNode.insertBefore(_sc, _sm);
+      return _sc.src;
+    }
+  })();
+</script>
+<!-- AceCounter Log Gathering Script End -->
+
+
+<script>
+  (function(i, s, o, g, r, a, m) {
+    i['GoogleAnalyticsObject'] = r;
+    i[r] = i[r] || function() {
+      (i[r].q = i[r].q || []).push(arguments)
+    }, i[r].l = 1 * new Date();
+    a = s.createElement(o),
+      m = s.getElementsByTagName(o)[0];
+    a.async = 1;
+    a.src = g;
+    m.parentNode.insertBefore(a, m)
+  })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+  ga('create', 'UA-75482318-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+<!-- 20190509 -->
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-139930330-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag('js', new Date());
+  gtag('config', 'UA-139930330-1');
+</script>
+
+
+<!-- 20180308 18:00 -->
+<!-- Tracking Script Start 2.0 -->
+<!--
+로딩 속도로 불필요한 스크립트 제거
+<script type="text/javascript" async="true">
+  var dspu = "JI4c3Nmc2ZzZnMx"; // === (필수)광고주key (변경하지마세요) ===
+  var dspu, dspt, dspo, dspom;
+
+  function loadanalJS_dsp(b, c) {
+    var d = document.getElementsByTagName("head")[0],
+      a = document.createElement("sc" + "ript");
+    a.type = "text/javasc" + "ript";
+    null != c && (a.charset = "UTF-8");
+    a.src = b;
+    a.async = "true";
+    d.appendChild(a)
+  }
+
+  function loadanal_dsp(b) {
+    loadanalJS_dsp(("https:" == document.location.protocol ? "https://" : "http://") + b, "UTF-8");
+    document.write("<span id=dsp_spn style=display:none;></span>");
+  }
+  loadanal_dsp("tk.realclick.co.kr/tk_comm.js?dspu=" + dspu + "&dspt=" + dspt + "&dspo=" + dspo + "&dspom=" + dspom);
+</script>
+-->
+<!-- Tracking Script End 2.0 -->
+
+<!-- 20180308 18:00 -->
+<!-- DSP 리타겟팅 Checking Script V.201603 Start-->
+<!--
+로딩 속도로 불필요한 스크립트 제거
+<script type="text/javascript" async="true">
+  function dsp_loadrtgJS(b, c) {
+    var d = document.getElementsByTagName("head")[0],
+      a = document.createElement("script");
+    a.type = "text/javascript";
+    null != c && (a.charset = "euc-kr");
+    a.src = b;
+    a.async = "true";
+    d.appendChild(a)
+  }
+
+  function dsp_load_rtg(b) {
+    dsp_loadrtgJS(("https:" == document.location.protocol ? " https://" : " http://") + b, "euc-kr")
+  }
+  dsp_load_rtg("realdmp.realclick.co.kr/rtarget/rtget.js?dsp_adid=ssfsfsfs1");
+</script>
+-->
+<!-- DSP 리타겟팅 Checking Script V.201603 End-->
+
+<!-- Mirae Log Analysis Script Ver 1.0 2019.06.10 -->
+<!--
+로딩 속도로 불필요한 스크립트 제거
+<script TYPE="text/javascript">
+  var mi_adkey = "olvcm";
+  var mi_is_defender = "";
+  var mi_dt = new Date(),
+    mi_y = mi_dt.getFullYear(),
+    mi_m = mi_dt.getMonth() + 1,
+    mi_d = mi_dt.getDate(),
+    mi_h = mi_dt.getHours();
+  var mi_date = "" + mi_y + (mi_m <= 9 ? "0" : "") + mi_m + (mi_d <= 9 ? "0" : "") + mi_d + (mi_h <= 9 ? "0" : "") + mi_h;
+  var mi_script = "<scr" + "ipt " + "type='text/javascr" + "ipt' src='//log1.toup.net/mirae_log.js?t=" + mi_date + "' async='true'></scr" + "ipt>";
+  document.writeln(mi_script);
+</script>
+-->
+<!-- Mirae Log Analysis Script END  -->  <!-- //footer -->
+  <!-- fixed quick menu -->
+  <div class="f_qmemu_wrap">
+    <div class="f_qmemu_fl">
+      <div class="f_qm_align">
+        <ul class="f_q_m_box">
+          <li>
+            <a href="javascript:void(0)" class="f_q_m_link">
+              <img src="https://i.gr-tn.co.kr/jayeon_2020/images/f_qicon01.png" alt="">
+              <span>電話相談</span>
+            </a>
+          </li>
+          <li>
+            <a href="javascript:void(0)" class="f_q_m_link">
+              <img src="https://i.gr-tn.co.kr/jayeon_2020/images/f_qicon02.png" alt="">
+              <span>온라인 상담</span>
+            </a>
+          </li>
+          <li>
+            <a href="javascript:void(0)" class="f_q_m_link">
+              <img src="https://i.gr-tn.co.kr/jayeon_2020/images/f_qicon03.png" alt="">
+              <span>예약하기</span>
+            </a>
+          </li>
+          <li>
+            <a href="javascript:void(0)" class="f_q_m_link">
+              <img src="https://line.me/static/c5bc5abac963fd619ec6d22240641a90/4b2df/icon-line.png" alt="">
+              <span>LINE相談</span>
+            </a>
+          </li>
+        </ul>
+        <div class="top_btn"><a href="javascript:void(0)"><img src="https://i.gr-tn.co.kr/jayeon_2020/images/f_qicon_top.png" alt="">TOP</a></div>
+      </div>
+      <div class="quick_cont_wrap">
+        <div class="call_wrap">
+          <h3 class="quick_cont_tit">電話相談<span class="_close"></span></h3>
+          <div class="quick_cont_al">
+            <ul class="call_list">
+                            <li>
+                <a href="tel:02-501-2120">
+                  <span class="call_name">강남본점</span>
+                  <span class="call_num">02-501-2120</span>
+                  <span class="call_img"><img src="https://i.gr-tn.co.kr/jayeon_2020/images/call_icon.png" alt="전화걸기"></span>
+                </a>
+              </li>
+                            <li>
+                <a href="tel:02-303-6777">
+                  <span class="call_name">신촌홍대점</span>
+                  <span class="call_num">02-303-6777</span>
+                  <span class="call_img"><img src="https://i.gr-tn.co.kr/jayeon_2020/images/call_icon.png" alt="전화걸기"></span>
+                </a>
+              </li>
+                            <li>
+                <a href="tel:02-987-1800">
+                  <span class="call_name">명동을지로점</span>
+                  <span class="call_num">02-987-1800</span>
+                  <span class="call_img"><img src="https://i.gr-tn.co.kr/jayeon_2020/images/call_icon.png" alt="전화걸기"></span>
+                </a>
+              </li>
+                            <li>
+                <a href="tel:02-875-0120">
+                  <span class="call_name">신림점</span>
+                  <span class="call_num">02-875-0120</span>
+                  <span class="call_img"><img src="https://i.gr-tn.co.kr/jayeon_2020/images/call_icon.png" alt="전화걸기"></span>
+                </a>
+              </li>
+                            <li>
+                <a href="tel:02-951-1357">
+                  <span class="call_name">노원점</span>
+                  <span class="call_num">02-951-1357</span>
+                  <span class="call_img"><img src="https://i.gr-tn.co.kr/jayeon_2020/images/call_icon.png" alt="전화걸기"></span>
+                </a>
+              </li>
+                            <li>
+                <a href="tel:02-2065-7762">
+                  <span class="call_name">목동점</span>
+                  <span class="call_num">02-2065-7762</span>
+                  <span class="call_img"><img src="https://i.gr-tn.co.kr/jayeon_2020/images/call_icon.png" alt="전화걸기"></span>
+                </a>
+              </li>
+                            <li>
+                <a href="tel:02-435-2008">
+                  <span class="call_name">상봉점</span>
+                  <span class="call_num">02-435-2008</span>
+                  <span class="call_img"><img src="https://i.gr-tn.co.kr/jayeon_2020/images/call_icon.png" alt="전화걸기"></span>
+                </a>
+              </li>
+                            <li>
+                <a href="tel:02-357-1989">
+                  <span class="call_name">은평연신내점</span>
+                  <span class="call_num">02-357-1989</span>
+                  <span class="call_img"><img src="https://i.gr-tn.co.kr/jayeon_2020/images/call_icon.png" alt="전화걸기"></span>
+                </a>
+              </li>
+                            <li>
+                <a href="tel:02-489-1006">
+                  <span class="call_name">천호점</span>
+                  <span class="call_num">02-489-1006</span>
+                  <span class="call_img"><img src="https://i.gr-tn.co.kr/jayeon_2020/images/call_icon.png" alt="전화걸기"></span>
+                </a>
+              </li>
+                            <li>
+                <a href="tel:02-6952-1049">
+                  <span class="call_name">건대점</span>
+                  <span class="call_num">02-6952-1049</span>
+                  <span class="call_img"><img src="https://i.gr-tn.co.kr/jayeon_2020/images/call_icon.png" alt="전화걸기"></span>
+                </a>
+              </li>
+                            <li>
+                <a href="tel:031-222-1076">
+                  <span class="call_name">수원점</span>
+                  <span class="call_num">031-222-1076</span>
+                  <span class="call_img"><img src="https://i.gr-tn.co.kr/jayeon_2020/images/call_icon.png" alt="전화걸기"></span>
+                </a>
+              </li>
+                            <li>
+                <a href="tel:031-913-1312">
+                  <span class="call_name">일산점</span>
+                  <span class="call_num">031-913-1312</span>
+                  <span class="call_img"><img src="https://i.gr-tn.co.kr/jayeon_2020/images/call_icon.png" alt="전화걸기"></span>
+                </a>
+              </li>
+                            <li>
+                <a href="tel:031-781-6777">
+                  <span class="call_name">분당점</span>
+                  <span class="call_num">031-781-6777</span>
+                  <span class="call_img"><img src="https://i.gr-tn.co.kr/jayeon_2020/images/call_icon.png" alt="전화걸기"></span>
+                </a>
+              </li>
+                            <li>
+                <a href="tel:032-710-0620">
+                  <span class="call_name">부천점</span>
+                  <span class="call_num">032-710-0620</span>
+                  <span class="call_img"><img src="https://i.gr-tn.co.kr/jayeon_2020/images/call_icon.png" alt="전화걸기"></span>
+                </a>
+              </li>
+                            <li>
+                <a href="tel:031-8049-7230">
+                  <span class="call_name">김포점</span>
+                  <span class="call_num">031-8049-7230</span>
+                  <span class="call_img"><img src="https://i.gr-tn.co.kr/jayeon_2020/images/call_icon.png" alt="전화걸기"></span>
+                </a>
+              </li>
+                            <li>
+                <a href="tel:031-401-7579">
+                  <span class="call_name">안산점</span>
+                  <span class="call_num">031-401-7579</span>
+                  <span class="call_img"><img src="https://i.gr-tn.co.kr/jayeon_2020/images/call_icon.png" alt="전화걸기"></span>
+                </a>
+              </li>
+                            <li>
+                <a href="tel:031-8055-8857">
+                  <span class="call_name">동탄점</span>
+                  <span class="call_num">031-8055-8857</span>
+                  <span class="call_img"><img src="https://i.gr-tn.co.kr/jayeon_2020/images/call_icon.png" alt="전화걸기"></span>
+                </a>
+              </li>
+                            <li>
+                <a href="tel:031-360-0525">
+                  <span class="call_name">안양평촌점</span>
+                  <span class="call_num">031-360-0525</span>
+                  <span class="call_img"><img src="https://i.gr-tn.co.kr/jayeon_2020/images/call_icon.png" alt="전화걸기"></span>
+                </a>
+              </li>
+                            <li>
+                <a href="tel:031-8054-7588">
+                  <span class="call_name">평택점</span>
+                  <span class="call_num">031-8054-7588</span>
+                  <span class="call_img"><img src="https://i.gr-tn.co.kr/jayeon_2020/images/call_icon.png" alt="전화걸기"></span>
+                </a>
+              </li>
+                            <li>
+                <a href="tel:032-719-7513">
+                  <span class="call_name">인천점</span>
+                  <span class="call_num">032-719-7513</span>
+                  <span class="call_img"><img src="https://i.gr-tn.co.kr/jayeon_2020/images/call_icon.png" alt="전화걸기"></span>
+                </a>
+              </li>
+                            <li>
+                <a href="tel:준비중">
+                  <span class="call_name">남양주점</span>
+                  <span class="call_num">준비중</span>
+                  <span class="call_img"><img src="https://i.gr-tn.co.kr/jayeon_2020/images/call_icon.png" alt="전화걸기"></span>
+                </a>
+              </li>
+                            <li>
+                <a href="tel:준비중">
+                  <span class="call_name">의정부점</span>
+                  <span class="call_num">준비중</span>
+                  <span class="call_img"><img src="https://i.gr-tn.co.kr/jayeon_2020/images/call_icon.png" alt="전화걸기"></span>
+                </a>
+              </li>
+                            <li>
+                <a href="tel:준비중">
+                  <span class="call_name">청라점</span>
+                  <span class="call_num">준비중</span>
+                  <span class="call_img"><img src="https://i.gr-tn.co.kr/jayeon_2020/images/call_icon.png" alt="전화걸기"></span>
+                </a>
+              </li>
+                            <li>
+                <a href="tel:준비중">
+                  <span class="call_name">이천점</span>
+                  <span class="call_num">준비중</span>
+                  <span class="call_img"><img src="https://i.gr-tn.co.kr/jayeon_2020/images/call_icon.png" alt="전화걸기"></span>
+                </a>
+              </li>
+                            <li>
+                <a href="tel:051-802-3004">
+                  <span class="call_name">부산서면점</span>
+                  <span class="call_num">051-802-3004</span>
+                  <span class="call_img"><img src="https://i.gr-tn.co.kr/jayeon_2020/images/call_icon.png" alt="전화걸기"></span>
+                </a>
+              </li>
+                            <li>
+                <a href="tel:051-731-4001">
+                  <span class="call_name">부산센텀점</span>
+                  <span class="call_num">051-731-4001</span>
+                  <span class="call_img"><img src="https://i.gr-tn.co.kr/jayeon_2020/images/call_icon.png" alt="전화걸기"></span>
+                </a>
+              </li>
+                            <li>
+                <a href="tel:053-710-7532">
+                  <span class="call_name">대구점</span>
+                  <span class="call_num">053-710-7532</span>
+                  <span class="call_img"><img src="https://i.gr-tn.co.kr/jayeon_2020/images/call_icon.png" alt="전화걸기"></span>
+                </a>
+              </li>
+                            <li>
+                <a href="tel:052-707-5168">
+                  <span class="call_name">울산점</span>
+                  <span class="call_num">052-707-5168</span>
+                  <span class="call_img"><img src="https://i.gr-tn.co.kr/jayeon_2020/images/call_icon.png" alt="전화걸기"></span>
+                </a>
+              </li>
+                            <li>
+                <a href="tel:준비중">
+                  <span class="call_name">포항점</span>
+                  <span class="call_num">준비중</span>
+                  <span class="call_img"><img src="https://i.gr-tn.co.kr/jayeon_2020/images/call_icon.png" alt="전화걸기"></span>
+                </a>
+              </li>
+                            <li>
+                <a href="tel:055-795-4406">
+                  <span class="call_name">창원점</span>
+                  <span class="call_num">055-795-4406</span>
+                  <span class="call_img"><img src="https://i.gr-tn.co.kr/jayeon_2020/images/call_icon.png" alt="전화걸기"></span>
+                </a>
+              </li>
+                            <li>
+                <a href="tel:준비중">
+                  <span class="call_name">구미점</span>
+                  <span class="call_num">준비중</span>
+                  <span class="call_img"><img src="https://i.gr-tn.co.kr/jayeon_2020/images/call_icon.png" alt="전화걸기"></span>
+                </a>
+              </li>
+                            <li>
+                <a href="tel:041-566-5070">
+                  <span class="call_name">천안점</span>
+                  <span class="call_num">041-566-5070</span>
+                  <span class="call_img"><img src="https://i.gr-tn.co.kr/jayeon_2020/images/call_icon.png" alt="전화걸기"></span>
+                </a>
+              </li>
+                            <li>
+                <a href="tel:043-237-3100">
+                  <span class="call_name">청주점</span>
+                  <span class="call_num">043-237-3100</span>
+                  <span class="call_img"><img src="https://i.gr-tn.co.kr/jayeon_2020/images/call_icon.png" alt="전화걸기"></span>
+                </a>
+              </li>
+                            <li>
+                <a href="tel:042-488-7532">
+                  <span class="call_name">대전점</span>
+                  <span class="call_num">042-488-7532</span>
+                  <span class="call_img"><img src="https://i.gr-tn.co.kr/jayeon_2020/images/call_icon.png" alt="전화걸기"></span>
+                </a>
+              </li>
+                            <li>
+                <a href="tel:준비중">
+                  <span class="call_name">세종점</span>
+                  <span class="call_num">준비중</span>
+                  <span class="call_img"><img src="https://i.gr-tn.co.kr/jayeon_2020/images/call_icon.png" alt="전화걸기"></span>
+                </a>
+              </li>
+                            <li>
+                <a href="tel:062-352-7975">
+                  <span class="call_name">광주점</span>
+                  <span class="call_num">062-352-7975</span>
+                  <span class="call_img"><img src="https://i.gr-tn.co.kr/jayeon_2020/images/call_icon.png" alt="전화걸기"></span>
+                </a>
+              </li>
+                            <li>
+                <a href="tel:063-715-0175">
+                  <span class="call_name">전주점</span>
+                  <span class="call_num">063-715-0175</span>
+                  <span class="call_img"><img src="https://i.gr-tn.co.kr/jayeon_2020/images/call_icon.png" alt="전화걸기"></span>
+                </a>
+              </li>
+                            <li>
+                <a href="tel:준비중">
+                  <span class="call_name">순천점</span>
+                  <span class="call_num">준비중</span>
+                  <span class="call_img"><img src="https://i.gr-tn.co.kr/jayeon_2020/images/call_icon.png" alt="전화걸기"></span>
+                </a>
+              </li>
+                            <li>
+                <a href="tel:033-813-0369">
+                  <span class="call_name">원주점</span>
+                  <span class="call_num">033-813-0369</span>
+                  <span class="call_img"><img src="https://i.gr-tn.co.kr/jayeon_2020/images/call_icon.png" alt="전화걸기"></span>
+                </a>
+              </li>
+                            <li>
+                <a href="tel:064-803-0176">
+                  <span class="call_name">제주점</span>
+                  <span class="call_num">064-803-0176</span>
+                  <span class="call_img"><img src="https://i.gr-tn.co.kr/jayeon_2020/images/call_icon.png" alt="전화걸기"></span>
+                </a>
+              </li>
+                          </ul>
+          </div>
+        </div>
+        <div class="call_wrap">
+          <h3 class="quick_cont_tit">온라인 상담<span class="_close"></span></h3>
+          <div class="quick_cont_al">
+            <div class="contact_form">
+              <form method="POST" action="https://jayeon-hanbang.com/online/counsel/quickCounsel" accept-charset="UTF-8" class="form-horizontal" enctype="multipart/form-data" id="quickCounselForm" name="quick_contact"><input name="_token" type="hidden" value="KEFt2xgRo0W8kagPlm1Dmyjm5jPAVBcbkyOd4GOl">
+              <ul class="contact_list">
+                <li>
+                  <select id="p_quick_cbranch_id" name="q_counsel_branch_id">
+                    <option value="" selected="selected">지점선택</option>
+                      <option value="">----- 서울권 -----</option>
+                      <option value="gangnam">강남본점</option>
+                      <option value="hongdae">신촌홍대점</option>
+                      <option value="myungdong">명동을지로점</option>
+                      <option value="sinlim">신림점</option>
+                      <option value="nowon">노원점</option>
+                      <option value="mokdong">목동점</option>
+                      <option value="sangbong">상봉점</option>
+                      <option value="yeonsin">은평연신내점</option>
+                      <option value="cheonho">천호점</option>
+                      <option value="konkuk">건대점</option>
+                      <option value="">----- 경기권 -----</option>
+                      <option value="suwon">수원점</option>
+                      <option value="ilsan">일산점</option>
+                      <option value="bundang">분당점</option>
+                      <option value="bucheon">부천점</option>
+                      <option value="gimpo">김포점</option>
+                      <option value="ansan">안산점</option>
+                      <option value="dongtan">동탄점</option>
+                      <option value="pyeongchon">안양평촌점</option>
+                      <option value="pyeongtaek">평택점</option>
+                      <option value="incheon">인천점</option>
+                      <option value="namyangju">남양주점</option>
+                      <option value="uijeongbu">의정부점</option>
+                      <option value="cheongna">청라점</option>
+                      <option value="icheon">이천점</option>
+                      <option value="">----- 경상권 -----</option>
+                      <option value="pusan">부산서면점</option>
+                      <option value="pusancentum">부산센텀점</option>
+                      <option value="daegu">대구점</option>
+                      <option value="ulsan">울산점</option>
+                      <option value="pohang">포항점</option>
+                      <option value="changwon">창원점</option>
+                      <option value="gumi">구미점</option>
+                      <ption value="">----- 충청권 -----</option>
+                      <option value="chunan">천안점</option>
+                      <option value="cheongju">청주점</option>
+                      <option value="daejeon">대전점</option>
+                      <option value="sejong">세종점</option>
+                      <option value="">----- 전라권 -----</option>
+                      <ption value="gwangju">광주점</option>
+                      <option value="jeonju">전주점</option>
+                      <option value="sooncheon">순천점</option>
+                      <option value="">----- 강원권 -----</option>
+                      <option value="wonju">원주점</option>
+                      <option value="">----- 제주권 -----</option>
+                      <option value="jeju">제주점</option>
+                  </select>
+                  <!-- <select id="p_quick_cbranch_id" name="q_counsel_branch_id"><option value="" selected="selected">지점선택</option><option value="gangnam">강남본점</option><option value="hongdae">신촌홍대점</option><option value="myungdong">명동을지로점</option><option value="sinlim">신림점</option><option value="nowon">노원점</option><option value="mokdong">목동점</option><option value="sangbong">상봉점</option><option value="yeonsin">은평연신내점</option><option value="cheonho">천호점</option><option value="konkuk">건대점</option><option value="suwon">수원점</option><option value="ilsan">일산점</option><option value="bundang">분당점</option><option value="bucheon">부천점</option><option value="gimpo">김포점</option><option value="ansan">안산점</option><option value="dongtan">동탄점</option><option value="pyeongchon">안양평촌점</option><option value="pyeongtaek">평택점</option><option value="incheon">인천점</option><option value="namyangju">남양주점</option><option value="uijeongbu">의정부점</option><option value="cheongna">청라점</option><option value="icheon">이천점</option><option value="pusan">부산서면점</option><option value="pusancentum">부산센텀점</option><option value="daegu">대구점</option><option value="ulsan">울산점</option><option value="pohang">포항점</option><option value="changwon">창원점</option><option value="gumi">구미점</option><option value="chunan">천안점</option><option value="cheongju">청주점</option><option value="daejeon">대전점</option><option value="sejong">세종점</option><option value="gwangju">광주점</option><option value="jeonju">전주점</option><option value="sooncheon">순천점</option><option value="wonju">원주점</option><option value="jeju">제주점</option></select> -->
+                </li>
+                <li>
+                  <select name="q_counsel_treat" id="p_quick_ctreat">
+                    <option value="">진료선택</option>
+                    <option value="CONTACT">내원상담</option>
+                    <option value="UNTACT">비대면(電話相談)</option>
+                  </select>
+                </li>
+                <li>
+                  <input type="text" name="q_counsel_name" value="" id="p_quick_cname" placeholder="이름">
+                </li>
+                <li class="q_tel">
+                  <select name="q_counsel_phone_01" id="p_quick_cphone_01">
+                    <option value="010">010</option>
+                    <option value="017">017</option>
+                    <option value="018">018</option>
+                    <option value="019">019</option>
+                  </select>
+                  <input type="text" name="q_counsel_phone_02" id="p_quick_cphone_02" maxlength="4" class="phone_num" autocomplete="no">
+                  <input type="text" name="q_counsel_phone_03" id="p_quick_cphone_03" maxlength="4" class="phone_num" autocomplete="no">
+                </li>
+                <li>
+                  <input type="password" name="q_counsel_pwd" value="" id="p_quick_cpwd" placeholder="비밀번호">
+                </li>
+                <li>
+                  <input type="text" name="q_counsel_title01" value="" id="p_quick_ctitle01" placeholder="제목">
+                </li>
+                <li>
+                  <textarea cols="50" rows="10" name="q_counsel_content01" value="" id="p_quick_ccontent01" placeholder="내용"></textarea>
+                </li>
+                <li class="checkbox" for="quick_agree">
+                  <span class="check_radio"><input type="checkbox" id="quick_agree"></span>
+                  <span class="check_text">개인정보 취급방침에 동의합니다.</span>
+                </li>
+                <li class="submit">
+                  <input type="button" onclick="javascript:jsPQuickCounsel();" value="상담 신청">
+                </li>
+              </ul>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="call_wrap">
+          <h3 class="quick_cont_tit">예약하기<span class="_close"></span></h3>
+          <div class="reservation">
+            <form method="POST" action="https://jayeon-hanbang.com/online/reserve/quickReserve" accept-charset="UTF-8" class="form-horizontal" enctype="multipart/form-data" id="quickReserveForm" name="quick_reservation"><input name="_token" type="hidden" value="KEFt2xgRo0W8kagPlm1Dmyjm5jPAVBcbkyOd4GOl">
+            <ul class="reserve_list">
+              <li>
+                <select id="p_quick_rbranch_id" name="q_reserve_branch_id">
+                  <option value="" selected="selected">지점선택</option>
+                                    <option value="">----- 서울권 -----</option>
+                                                      <option value="gangnam">강남본점</option>
+                                                      <option value="hongdae">신촌홍대점</option>
+                                                      <option value="myungdong">명동을지로점</option>
+                                                      <option value="sinlim">신림점</option>
+                                                      <option value="nowon">노원점</option>
+                                                      <option value="mokdong">목동점</option>
+                                                      <option value="sangbong">상봉점</option>
+                                                      <option value="yeonsin">은평연신내점</option>
+                                                      <option value="cheonho">천호점</option>
+                                                      <option value="konkuk">건대점</option>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              <option value="">----- 경기권 -----</option>
+                                                                                                                                                                                                                                                                                                                                                                                                                              <option value="suwon">수원점</option>
+                                                      <option value="ilsan">일산점</option>
+                                                      <option value="bundang">분당점</option>
+                                                      <option value="bucheon">부천점</option>
+                                                      <option value="gimpo">김포점</option>
+                                                      <option value="ansan">안산점</option>
+                                                      <option value="dongtan">동탄점</option>
+                                                      <option value="pyeongchon">안양평촌점</option>
+                                                      <option value="pyeongtaek">평택점</option>
+                                                      <option value="incheon">인천점</option>
+                                                      <option value="namyangju">남양주점</option>
+                                                      <option value="uijeongbu">의정부점</option>
+                                                      <option value="cheongna">청라점</option>
+                                                      <option value="icheon">이천점</option>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      <option value="">----- 경상권 -----</option>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      <option value="pusan">부산서면점</option>
+                                                      <option value="pusancentum">부산센텀점</option>
+                                                      <option value="daegu">대구점</option>
+                                                      <option value="ulsan">울산점</option>
+                                                      <option value="pohang">포항점</option>
+                                                      <option value="changwon">창원점</option>
+                                                      <option value="gumi">구미점</option>
+                                                                                                                                                                                                                                                                                                                                                                                          <option value="">----- 충청권 -----</option>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  <option value="chunan">천안점</option>
+                                                      <option value="cheongju">청주점</option>
+                                                      <option value="daejeon">대전점</option>
+                                                      <option value="sejong">세종점</option>
+                                                                                                                                                                                                                                          <option value="">----- 전라권 -----</option>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  <option value="gwangju">광주점</option>
+                                                      <option value="jeonju">전주점</option>
+                                                      <option value="sooncheon">순천점</option>
+                                                                                                                              <option value="">----- 강원권 -----</option>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              <option value="wonju">원주점</option>
+                                                                                          <option value="">----- 제주권 -----</option>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  <option value="jeju">제주점</option>
+                                                    </select>
+                <!-- <select id="p_quick_rbranch_id" name="q_reserve_branch_id"><option value="" selected="selected">지점선택</option><option value="gangnam">강남본점</option><option value="hongdae">신촌홍대점</option><option value="myungdong">명동을지로점</option><option value="sinlim">신림점</option><option value="nowon">노원점</option><option value="mokdong">목동점</option><option value="sangbong">상봉점</option><option value="yeonsin">은평연신내점</option><option value="cheonho">천호점</option><option value="konkuk">건대점</option><option value="suwon">수원점</option><option value="ilsan">일산점</option><option value="bundang">분당점</option><option value="bucheon">부천점</option><option value="gimpo">김포점</option><option value="ansan">안산점</option><option value="dongtan">동탄점</option><option value="pyeongchon">안양평촌점</option><option value="pyeongtaek">평택점</option><option value="incheon">인천점</option><option value="namyangju">남양주점</option><option value="uijeongbu">의정부점</option><option value="cheongna">청라점</option><option value="icheon">이천점</option><option value="pusan">부산서면점</option><option value="pusancentum">부산센텀점</option><option value="daegu">대구점</option><option value="ulsan">울산점</option><option value="pohang">포항점</option><option value="changwon">창원점</option><option value="gumi">구미점</option><option value="chunan">천안점</option><option value="cheongju">청주점</option><option value="daejeon">대전점</option><option value="sejong">세종점</option><option value="gwangju">광주점</option><option value="jeonju">전주점</option><option value="sooncheon">순천점</option><option value="wonju">원주점</option><option value="jeju">제주점</option></select> -->
+              </li>
+              <li>
+                <select name="q_reserve_treat" id="p_quick_rtreat">
+                  <option value="">진료선택</option>
+                  <option value="CONTACT">내원상담</option>
+                  <option value="UNTACT">비대면(電話相談)</option>
+                </select>
+              </li>
+              <li>
+                <input type="text" name="q_reserve_name" value="" id="p_quick_rname" placeholder="이름">
+              </li>
+              <li class="q_tel">
+                <select name="q_reserve_phone_01" id="p_quick_rphone_01">
+                  <option value="010">010</option>
+                  <option value="017">017</option>
+                  <option value="018">018</option>
+                  <option value="019">019</option>
+                </select>
+                <input type="text" name="q_reserve_phone_02" id="p_quick_rphone_02" maxlength="4" class="phone_num" autocomplete="no">
+                <input type="text" name="q_reserve_phone_03" id="p_quick_rphone_03" maxlength="4" class="phone_num" autocomplete="no">
+              </li>
+              <li class="checkbox">
+                <span class="check_radio"><input type="checkbox" id="p_quick_agree"></span>
+                <span class="check_text">개인정보 취급방침에 동의합니다.<br />정보를남겨주시면 예약이 완료됩니다.</span>
+              </li>
+              <li class="submit">
+                <input type="button" onclick="javascript:jsPQuickReserve();" value="예약 신청">
+              </li>
+            </ul>
+            </form>
+          </div>
+        </div>
+        <div class="call_wrap">
+          <h3 class="quick_cont_tit">LINE相談<span class="_close"></span></h3>
+          <ul class="kakao_wrap">
+                                                <li><a href="https://pf.kakao.com/_YNCxoM" target="_blank"><img src="https://i.gr-tn.co.kr/jayeon_2020/images/kakao_icon01.png" alt="강남본점"></a></li>
+                                                                        <li><a href="https://pf.kakao.com/_txoxcys" target="_blank"><img src="https://i.gr-tn.co.kr/jayeon_2020/public/upload/v2_branch/trUYpCMuIJZGbI9cRCYnqKCk04DSbekuaHL8afiT.png" alt="신촌홍대점"></a></li>
+                                                                        <li><a href="https://pf.kakao.com/_xibZpM" target="_blank"><img src="https://i.gr-tn.co.kr/jayeon_2020/images/kakao_icon03.png" alt="명동을지로점"></a></li>
+                                                                        <li><a href="https://pf.kakao.com/_xcxfjxoM" target="_blank"><img src="https://i.gr-tn.co.kr/jayeon_2020/images/kakao_icon04.png" alt="신림점"></a></li>
+                                                                        <li><a href="https://pf.kakao.com/_xixaCxoM" target="_blank"><img src="https://i.gr-tn.co.kr/jayeon_2020/images/kakao_icon05.png" alt="노원점"></a></li>
+                                                                        <li><a href="https://pf.kakao.com/_lxijxoM" target="_blank"><img src="https://i.gr-tn.co.kr/jayeon_2020/images/kakao_icon06.png" alt="목동점"></a></li>
+                                                                        <li><a href="https://pf.kakao.com/_xoxkFxad" target="_blank"><img src="https://i.gr-tn.co.kr/jayeon_2020/images/kakao_icon07.png" alt="상봉점"></a></li>
+                                                                        <li><a href="https://pf.kakao.com/_QDRxgu" target="_blank"><img src="https://i.gr-tn.co.kr/jayeon_2020/images/kakao_icon13.png" alt="은평연신내점"></a></li>
+                                                                        <li><a href="https://pf.kakao.com/_FjFxnK" target="_blank"><img src="https://i.gr-tn.co.kr/jayeon_2020/images/kakao_icon17.png" alt="천호점"></a></li>
+                                                                        <li><a href="https://pf.kakao.com/_pCgxaK" target="_blank"><img src="https://i.gr-tn.co.kr/jayeon_2020/images/kakao_icon19.png" alt="건대점"></a></li>
+                                                                        <li><a href="https://pf.kakao.com/_lxjYxhxb" target="_blank"><img src="https://i.gr-tn.co.kr/jayeon_2020/images/kakao_icon08.png" alt="수원점"></a></li>
+                                                                        <li><a href="https://pf.kakao.com/_FAjxoM" target="_blank"><img src="https://i.gr-tn.co.kr/jayeon_2020/images/kakao_icon14.png" alt="일산점"></a></li>
+                                                                        <li><a href="https://pf.kakao.com/_zKExfd" target="_blank"><img src="https://i.gr-tn.co.kr/jayeon_2020/images/kakao_icon15.png" alt="분당점"></a></li>
+                                                                        <li><a href="https://pf.kakao.com/_AixcrK" target="_blank"><img src="https://i.gr-tn.co.kr/jayeon_2020/images/kakao_icon18.png" alt="부천점"></a></li>
+                                                                        <li><a href="https://pf.kakao.com/_XNxfmK" target="_blank"><img src="https://i.gr-tn.co.kr/jayeon_2020/images/kakao_icon20.png" alt="김포점"></a></li>
+                                                                        <li><a href="https://pf.kakao.com/_eKLxmK" target="_blank"><img src="https://i.gr-tn.co.kr/jayeon_2020/images/kakao_icon22.png" alt="안산점"></a></li>
+                                                                        <li><a href="https://pf.kakao.com/_fxaxhxds" target="_blank"><img src="https://i.gr-tn.co.kr/jayeon_2020/public/upload/v2_branch/H8l3eZ36Ra04tgmviDJR7EtFczFro13gecIr5PJt.png" alt="동탄점"></a></li>
+                                                                        <li><a href="https://pf.kakao.com/_zBdyK" target="_blank"><img src="https://i.gr-tn.co.kr/jayeon_2020/public/upload/v2_branch/rtF1of5HoRIXL8Y6UNjQLIyBP6ohexLkmolyI0n8.png" alt="안양평촌점"></a></li>
+                                                                        <li><a href="https://pf.kakao.com/_vaNhb" target="_blank"><img src="https://i.gr-tn.co.kr/jayeon_2020/public/upload/v2_branch/aWz1Zt9gpMh70Yaow4HrAF1xHxMpN18Q8ZEXxLuF.png" alt="평택점"></a></li>
+                                                                        <li><a href="https://pf.kakao.com/_xisxhhb" target="_blank"><img src="https://i.gr-tn.co.kr/jayeon_2020/public/upload/v2_branch/TYyKLri4iL8ykYybDztQiChtdp6Pm0mIE5bIIiLi.png" alt="인천점"></a></li>
+                                                                                                                                                                        <li><a href="https://pf.kakao.com/_zxdCxoM" target="_blank"><img src="https://i.gr-tn.co.kr/jayeon_2020/images/kakao_icon09.png" alt="부산서면점"></a></li>
+                                                                        <li><a href="https://pf.kakao.com/_PHYtu" target="_blank"><img src="https://i.gr-tn.co.kr/jayeon_2020/images/kakao_icon10.png" alt="부산센텀점"></a></li>
+                                                                        <li><a href="https://pf.kakao.com/_xfrxasT" target="_blank"><img src="https://i.gr-tn.co.kr/jayeon_2020/images/kakao_icon11.png" alt="대구점"></a></li>
+                                                                        <li><a href="https://pf.kakao.com/_Lxoeqs" target="_blank"><img src="https://i.gr-tn.co.kr/jayeon_2020/public/upload/v2_branch/5ZGTiNmF5vRqh14MkoPMuvj8yRzdPeKLMdtZH8Po.png" alt="울산점"></a></li>
+                                                                                                <li><a href="https://pf.kakao.com/_Yxelis" target="_blank"><img src="https://i.gr-tn.co.kr/jayeon_2020/public/upload/v2_branch/5hnyUYJTASOAUwWRTQ8IMOq9vhZb3jfBsXllX2Gx.jpeg" alt="창원점"></a></li>
+                                                                                                <li><a href="https://pf.kakao.com/_VITxoM" target="_blank"><img src="https://i.gr-tn.co.kr/jayeon_2020/images/kakao_icon12.png" alt="천안점"></a></li>
+                                                                        <li><a href="https://pf.kakao.com/_ZHxmUxb" target="_blank"><img src="https://i.gr-tn.co.kr/jayeon_2020/images/kakao_icon16.png" alt="청주점"></a></li>
+                                                                        <li><a href="https://pf.kakao.com/_DcxaxeK" target="_blank"><img src="https://i.gr-tn.co.kr/jayeon_2020/images/kakao_icon21.png" alt="대전점"></a></li>
+                                                                                                <li><a href="https://pf.kakao.com/_xoxmqxkK" target="_blank"><img src="https://i.gr-tn.co.kr/jayeon_2020/public/upload/v2_branch/QaFjlYI8ilJMoFBh7vQoepNThhr1tV1R8Zsm849k.png" alt="광주점"></a></li>
+                                                                        <li><a href="https://pf.kakao.com/_pxdxcVb" target="_blank"><img src="https://i.gr-tn.co.kr/jayeon_2020/public/upload/v2_branch/tuAYNLocVQN7Ua1i6gloou8iFbd8opz6dMxUache.png" alt="전주점"></a></li>
+                                                                                                <li><a href="https://pf.kakao.com/_qDxehb" target="_blank"><img src="https://i.gr-tn.co.kr/jayeon_2020/public/upload/v2_branch/CNxqRnzjROwyLBFEBx3TbXFlKV6xj4NguiSxciQF.png" alt="원주점"></a></li>
+                                                                        <li><a href="https://pf.kakao.com/_YhjQb" target="_blank"><img src="https://i.gr-tn.co.kr/jayeon_2020/public/upload/v2_branch/V3vujCQsSKYrwXc9hQ3QvjrcAm81CSfKplDZg8ue.png" alt="제주점"></a></li>
+                                              </ul>
+          <div class="kakao_more">
+            <a href="/online/kakaotalk">LINE相談 자세히보기</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- //fixed quick menu -->
+  <!-- mobile_fixed_quick_menu -->
+  <div class="mobile_quickmenu">
+    <div class="quick_cont_wrap">
+      <div class="cont mo-h-util-call-box">
+        <div class="_close"><span></span></div>
+        <h3 class="cont_tit">電話相談</h3>
+        <div class="cont_al">
+                    <div class="group_tit"><span>서울권</span></div>
+          <ul class="call_list">
+                                    <li>
+              <a href="tel:02-501-2120">
+                <p>
+                  <span class="call_name">강남본점</span>
+                  <span class="call_num">02-501-2120</span>
+                </p>
+                <span class="call_img"><img src="https://i.gr-tn.co.kr/jayeon_2020/images/call_icon.png" alt="전화걸기"></span>
+              </a>
+            </li>
+                                    <li>
+              <a href="tel:02-303-6777">
+                <p>
+                  <span class="call_name">신촌홍대점</span>
+                  <span class="call_num">02-303-6777</span>
+                </p>
+                <span class="call_img"><img src="https://i.gr-tn.co.kr/jayeon_2020/images/call_icon.png" alt="전화걸기"></span>
+              </a>
+            </li>
+                                    <li>
+              <a href="tel:02-987-1800">
+                <p>
+                  <span class="call_name">명동을지로점</span>
+                  <span class="call_num">02-987-1800</span>
+                </p>
+                <span class="call_img"><img src="https://i.gr-tn.co.kr/jayeon_2020/images/call_icon.png" alt="전화걸기"></span>
+              </a>
+            </li>
+                                    <li>
+              <a href="tel:02-875-0120">
+                <p>
+                  <span class="call_name">신림점</span>
+                  <span class="call_num">02-875-0120</span>
+                </p>
+                <span class="call_img"><img src="https://i.gr-tn.co.kr/jayeon_2020/images/call_icon.png" alt="전화걸기"></span>
+              </a>
+            </li>
+                                    <li>
+              <a href="tel:02-951-1357">
+                <p>
+                  <span class="call_name">노원점</span>
+                  <span class="call_num">02-951-1357</span>
+                </p>
+                <span class="call_img"><img src="https://i.gr-tn.co.kr/jayeon_2020/images/call_icon.png" alt="전화걸기"></span>
+              </a>
+            </li>
+                                    <li>
+              <a href="tel:02-2065-7762">
+                <p>
+                  <span class="call_name">목동점</span>
+                  <span class="call_num">02-2065-7762</span>
+                </p>
+                <span class="call_img"><img src="https://i.gr-tn.co.kr/jayeon_2020/images/call_icon.png" alt="전화걸기"></span>
+              </a>
+            </li>
+                                    <li>
+              <a href="tel:02-435-2008">
+                <p>
+                  <span class="call_name">상봉점</span>
+                  <span class="call_num">02-435-2008</span>
+                </p>
+                <span class="call_img"><img src="https://i.gr-tn.co.kr/jayeon_2020/images/call_icon.png" alt="전화걸기"></span>
+              </a>
+            </li>
+                                    <li>
+              <a href="tel:02-357-1989">
+                <p>
+                  <span class="call_name">은평연신내점</span>
+                  <span class="call_num">02-357-1989</span>
+                </p>
+                <span class="call_img"><img src="https://i.gr-tn.co.kr/jayeon_2020/images/call_icon.png" alt="전화걸기"></span>
+              </a>
+            </li>
+                                    <li>
+              <a href="tel:02-489-1006">
+                <p>
+                  <span class="call_name">천호점</span>
+                  <span class="call_num">02-489-1006</span>
+                </p>
+                <span class="call_img"><img src="https://i.gr-tn.co.kr/jayeon_2020/images/call_icon.png" alt="전화걸기"></span>
+              </a>
+            </li>
+                                    <li>
+              <a href="tel:02-6952-1049">
+                <p>
+                  <span class="call_name">건대점</span>
+                  <span class="call_num">02-6952-1049</span>
+                </p>
+                <span class="call_img"><img src="https://i.gr-tn.co.kr/jayeon_2020/images/call_icon.png" alt="전화걸기"></span>
+              </a>
+            </li>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      </ul>
+                    <div class="group_tit"><span>경기권</span></div>
+          <ul class="call_list">
+                                                                                                                                                                                                                                                                                    <li>
+              <a href="tel:031-222-1076">
+                <p>
+                  <span class="call_name">수원점</span>
+                  <span class="call_num">031-222-1076</span>
+                </p>
+                <span class="call_img"><img src="https://i.gr-tn.co.kr/jayeon_2020/images/call_icon.png" alt="전화걸기"></span>
+              </a>
+            </li>
+                                    <li>
+              <a href="tel:031-913-1312">
+                <p>
+                  <span class="call_name">일산점</span>
+                  <span class="call_num">031-913-1312</span>
+                </p>
+                <span class="call_img"><img src="https://i.gr-tn.co.kr/jayeon_2020/images/call_icon.png" alt="전화걸기"></span>
+              </a>
+            </li>
+                                    <li>
+              <a href="tel:031-781-6777">
+                <p>
+                  <span class="call_name">분당점</span>
+                  <span class="call_num">031-781-6777</span>
+                </p>
+                <span class="call_img"><img src="https://i.gr-tn.co.kr/jayeon_2020/images/call_icon.png" alt="전화걸기"></span>
+              </a>
+            </li>
+                                    <li>
+              <a href="tel:032-710-0620">
+                <p>
+                  <span class="call_name">부천점</span>
+                  <span class="call_num">032-710-0620</span>
+                </p>
+                <span class="call_img"><img src="https://i.gr-tn.co.kr/jayeon_2020/images/call_icon.png" alt="전화걸기"></span>
+              </a>
+            </li>
+                                    <li>
+              <a href="tel:031-8049-7230">
+                <p>
+                  <span class="call_name">김포점</span>
+                  <span class="call_num">031-8049-7230</span>
+                </p>
+                <span class="call_img"><img src="https://i.gr-tn.co.kr/jayeon_2020/images/call_icon.png" alt="전화걸기"></span>
+              </a>
+            </li>
+                                    <li>
+              <a href="tel:031-401-7579">
+                <p>
+                  <span class="call_name">안산점</span>
+                  <span class="call_num">031-401-7579</span>
+                </p>
+                <span class="call_img"><img src="https://i.gr-tn.co.kr/jayeon_2020/images/call_icon.png" alt="전화걸기"></span>
+              </a>
+            </li>
+                                    <li>
+              <a href="tel:031-8055-8857">
+                <p>
+                  <span class="call_name">동탄점</span>
+                  <span class="call_num">031-8055-8857</span>
+                </p>
+                <span class="call_img"><img src="https://i.gr-tn.co.kr/jayeon_2020/images/call_icon.png" alt="전화걸기"></span>
+              </a>
+            </li>
+                                    <li>
+              <a href="tel:031-360-0525">
+                <p>
+                  <span class="call_name">안양평촌점</span>
+                  <span class="call_num">031-360-0525</span>
+                </p>
+                <span class="call_img"><img src="https://i.gr-tn.co.kr/jayeon_2020/images/call_icon.png" alt="전화걸기"></span>
+              </a>
+            </li>
+                                    <li>
+              <a href="tel:031-8054-7588">
+                <p>
+                  <span class="call_name">평택점</span>
+                  <span class="call_num">031-8054-7588</span>
+                </p>
+                <span class="call_img"><img src="https://i.gr-tn.co.kr/jayeon_2020/images/call_icon.png" alt="전화걸기"></span>
+              </a>
+            </li>
+                                    <li>
+              <a href="tel:032-719-7513">
+                <p>
+                  <span class="call_name">인천점</span>
+                  <span class="call_num">032-719-7513</span>
+                </p>
+                <span class="call_img"><img src="https://i.gr-tn.co.kr/jayeon_2020/images/call_icon.png" alt="전화걸기"></span>
+              </a>
+            </li>
+                                    <li>
+              <a href="tel:준비중">
+                <p>
+                  <span class="call_name">남양주점</span>
+                  <span class="call_num">준비중</span>
+                </p>
+                <span class="call_img"><img src="https://i.gr-tn.co.kr/jayeon_2020/images/call_icon.png" alt="전화걸기"></span>
+              </a>
+            </li>
+                                    <li>
+              <a href="tel:준비중">
+                <p>
+                  <span class="call_name">의정부점</span>
+                  <span class="call_num">준비중</span>
+                </p>
+                <span class="call_img"><img src="https://i.gr-tn.co.kr/jayeon_2020/images/call_icon.png" alt="전화걸기"></span>
+              </a>
+            </li>
+                                    <li>
+              <a href="tel:준비중">
+                <p>
+                  <span class="call_name">청라점</span>
+                  <span class="call_num">준비중</span>
+                </p>
+                <span class="call_img"><img src="https://i.gr-tn.co.kr/jayeon_2020/images/call_icon.png" alt="전화걸기"></span>
+              </a>
+            </li>
+                                    <li>
+              <a href="tel:준비중">
+                <p>
+                  <span class="call_name">이천점</span>
+                  <span class="call_num">준비중</span>
+                </p>
+                <span class="call_img"><img src="https://i.gr-tn.co.kr/jayeon_2020/images/call_icon.png" alt="전화걸기"></span>
+              </a>
+            </li>
+                                                                                                                                                                                                                                                                                                                                                                                                                      </ul>
+                    <div class="group_tit"><span>경상권</span></div>
+          <ul class="call_list">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <li>
+              <a href="tel:051-802-3004">
+                <p>
+                  <span class="call_name">부산서면점</span>
+                  <span class="call_num">051-802-3004</span>
+                </p>
+                <span class="call_img"><img src="https://i.gr-tn.co.kr/jayeon_2020/images/call_icon.png" alt="전화걸기"></span>
+              </a>
+            </li>
+                                    <li>
+              <a href="tel:051-731-4001">
+                <p>
+                  <span class="call_name">부산센텀점</span>
+                  <span class="call_num">051-731-4001</span>
+                </p>
+                <span class="call_img"><img src="https://i.gr-tn.co.kr/jayeon_2020/images/call_icon.png" alt="전화걸기"></span>
+              </a>
+            </li>
+                                    <li>
+              <a href="tel:053-710-7532">
+                <p>
+                  <span class="call_name">대구점</span>
+                  <span class="call_num">053-710-7532</span>
+                </p>
+                <span class="call_img"><img src="https://i.gr-tn.co.kr/jayeon_2020/images/call_icon.png" alt="전화걸기"></span>
+              </a>
+            </li>
+                                    <li>
+              <a href="tel:052-707-5168">
+                <p>
+                  <span class="call_name">울산점</span>
+                  <span class="call_num">052-707-5168</span>
+                </p>
+                <span class="call_img"><img src="https://i.gr-tn.co.kr/jayeon_2020/images/call_icon.png" alt="전화걸기"></span>
+              </a>
+            </li>
+                                    <li>
+              <a href="tel:준비중">
+                <p>
+                  <span class="call_name">포항점</span>
+                  <span class="call_num">준비중</span>
+                </p>
+                <span class="call_img"><img src="https://i.gr-tn.co.kr/jayeon_2020/images/call_icon.png" alt="전화걸기"></span>
+              </a>
+            </li>
+                                    <li>
+              <a href="tel:055-795-4406">
+                <p>
+                  <span class="call_name">창원점</span>
+                  <span class="call_num">055-795-4406</span>
+                </p>
+                <span class="call_img"><img src="https://i.gr-tn.co.kr/jayeon_2020/images/call_icon.png" alt="전화걸기"></span>
+              </a>
+            </li>
+                                    <li>
+              <a href="tel:준비중">
+                <p>
+                  <span class="call_name">구미점</span>
+                  <span class="call_num">준비중</span>
+                </p>
+                <span class="call_img"><img src="https://i.gr-tn.co.kr/jayeon_2020/images/call_icon.png" alt="전화걸기"></span>
+              </a>
+            </li>
+                                                                                                                                                                                                                                              </ul>
+                    <div class="group_tit"><span>충청권</span></div>
+          <ul class="call_list">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            <li>
+              <a href="tel:041-566-5070">
+                <p>
+                  <span class="call_name">천안점</span>
+                  <span class="call_num">041-566-5070</span>
+                </p>
+                <span class="call_img"><img src="https://i.gr-tn.co.kr/jayeon_2020/images/call_icon.png" alt="전화걸기"></span>
+              </a>
+            </li>
+                                    <li>
+              <a href="tel:043-237-3100">
+                <p>
+                  <span class="call_name">청주점</span>
+                  <span class="call_num">043-237-3100</span>
+                </p>
+                <span class="call_img"><img src="https://i.gr-tn.co.kr/jayeon_2020/images/call_icon.png" alt="전화걸기"></span>
+              </a>
+            </li>
+                                    <li>
+              <a href="tel:042-488-7532">
+                <p>
+                  <span class="call_name">대전점</span>
+                  <span class="call_num">042-488-7532</span>
+                </p>
+                <span class="call_img"><img src="https://i.gr-tn.co.kr/jayeon_2020/images/call_icon.png" alt="전화걸기"></span>
+              </a>
+            </li>
+                                    <li>
+              <a href="tel:준비중">
+                <p>
+                  <span class="call_name">세종점</span>
+                  <span class="call_num">준비중</span>
+                </p>
+                <span class="call_img"><img src="https://i.gr-tn.co.kr/jayeon_2020/images/call_icon.png" alt="전화걸기"></span>
+              </a>
+            </li>
+                                                                                                                                              </ul>
+                    <div class="group_tit"><span>전라권</span></div>
+          <ul class="call_list">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            <li>
+              <a href="tel:062-352-7975">
+                <p>
+                  <span class="call_name">광주점</span>
+                  <span class="call_num">062-352-7975</span>
+                </p>
+                <span class="call_img"><img src="https://i.gr-tn.co.kr/jayeon_2020/images/call_icon.png" alt="전화걸기"></span>
+              </a>
+            </li>
+                                    <li>
+              <a href="tel:063-715-0175">
+                <p>
+                  <span class="call_name">전주점</span>
+                  <span class="call_num">063-715-0175</span>
+                </p>
+                <span class="call_img"><img src="https://i.gr-tn.co.kr/jayeon_2020/images/call_icon.png" alt="전화걸기"></span>
+              </a>
+            </li>
+                                    <li>
+              <a href="tel:준비중">
+                <p>
+                  <span class="call_name">순천점</span>
+                  <span class="call_num">준비중</span>
+                </p>
+                <span class="call_img"><img src="https://i.gr-tn.co.kr/jayeon_2020/images/call_icon.png" alt="전화걸기"></span>
+              </a>
+            </li>
+                                                                      </ul>
+                    <div class="group_tit"><span>강원권</span></div>
+          <ul class="call_list">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <li>
+              <a href="tel:033-813-0369">
+                <p>
+                  <span class="call_name">원주점</span>
+                  <span class="call_num">033-813-0369</span>
+                </p>
+                <span class="call_img"><img src="https://i.gr-tn.co.kr/jayeon_2020/images/call_icon.png" alt="전화걸기"></span>
+              </a>
+            </li>
+                                              </ul>
+                    <div class="group_tit"><span>제주권</span></div>
+          <ul class="call_list">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            <li>
+              <a href="tel:064-803-0176">
+                <p>
+                  <span class="call_name">제주점</span>
+                  <span class="call_num">064-803-0176</span>
+                </p>
+                <span class="call_img"><img src="https://i.gr-tn.co.kr/jayeon_2020/images/call_icon.png" alt="전화걸기"></span>
+              </a>
+            </li>
+                      </ul>
+                  </div>
+      </div>
+      <div class="cont">
+        <div class="_close"><span></span></div>
+        <h3 class="cont_tit">온라인 상담</h3>
+        <div class="contact_form cont_al">
+          <form method="POST" action="https://jayeon-hanbang.com/online/counsel/quickCounsel" accept-charset="UTF-8" class="form-horizontal" enctype="multipart/form-data" id="mquickCounselForm" name="quick_contact"><input name="_token" type="hidden" value="KEFt2xgRo0W8kagPlm1Dmyjm5jPAVBcbkyOd4GOl">
+          <ul class="contact_list">
+            <li>
+              <select id="m_quick_cbranch_id" name="q_counsel_branch_id">
+                <option value="" selected="selected">지점선택</option>
+                                <option value="">----- 서울권 -----</option>
+                                                <option value="gangnam">강남본점</option>
+                                                <option value="hongdae">신촌홍대점</option>
+                                                <option value="myungdong">명동을지로점</option>
+                                                <option value="sinlim">신림점</option>
+                                                <option value="nowon">노원점</option>
+                                                <option value="mokdong">목동점</option>
+                                                <option value="sangbong">상봉점</option>
+                                                <option value="yeonsin">은평연신내점</option>
+                                                <option value="cheonho">천호점</option>
+                                                <option value="konkuk">건대점</option>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <option value="">----- 경기권 -----</option>
+                                                                                                                                                                                                                                                                                                                                                                                <option value="suwon">수원점</option>
+                                                <option value="ilsan">일산점</option>
+                                                <option value="bundang">분당점</option>
+                                                <option value="bucheon">부천점</option>
+                                                <option value="gimpo">김포점</option>
+                                                <option value="ansan">안산점</option>
+                                                <option value="dongtan">동탄점</option>
+                                                <option value="pyeongchon">안양평촌점</option>
+                                                <option value="pyeongtaek">평택점</option>
+                                                <option value="incheon">인천점</option>
+                                                <option value="namyangju">남양주점</option>
+                                                <option value="uijeongbu">의정부점</option>
+                                                <option value="cheongna">청라점</option>
+                                                <option value="icheon">이천점</option>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <option value="">----- 경상권 -----</option>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <option value="pusan">부산서면점</option>
+                                                <option value="pusancentum">부산센텀점</option>
+                                                <option value="daegu">대구점</option>
+                                                <option value="ulsan">울산점</option>
+                                                <option value="pohang">포항점</option>
+                                                <option value="changwon">창원점</option>
+                                                <option value="gumi">구미점</option>
+                                                                                                                                                                                                                                                                                                                                                <option value="">----- 충청권 -----</option>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <option value="chunan">천안점</option>
+                                                <option value="cheongju">청주점</option>
+                                                <option value="daejeon">대전점</option>
+                                                <option value="sejong">세종점</option>
+                                                                                                                                                                                                                <option value="">----- 전라권 -----</option>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <option value="gwangju">광주점</option>
+                                                <option value="jeonju">전주점</option>
+                                                <option value="sooncheon">순천점</option>
+                                                                                                                <option value="">----- 강원권 -----</option>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <option value="wonju">원주점</option>
+                                                                                <option value="">----- 제주권 -----</option>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <option value="jeju">제주점</option>
+                                              </select>
+              <!-- <select id="m_quick_cbranch_id" name="q_counsel_branch_id"><option value="" selected="selected">지점선택</option><option value="gangnam">강남본점</option><option value="hongdae">신촌홍대점</option><option value="myungdong">명동을지로점</option><option value="sinlim">신림점</option><option value="nowon">노원점</option><option value="mokdong">목동점</option><option value="sangbong">상봉점</option><option value="yeonsin">은평연신내점</option><option value="cheonho">천호점</option><option value="konkuk">건대점</option><option value="suwon">수원점</option><option value="ilsan">일산점</option><option value="bundang">분당점</option><option value="bucheon">부천점</option><option value="gimpo">김포점</option><option value="ansan">안산점</option><option value="dongtan">동탄점</option><option value="pyeongchon">안양평촌점</option><option value="pyeongtaek">평택점</option><option value="incheon">인천점</option><option value="namyangju">남양주점</option><option value="uijeongbu">의정부점</option><option value="cheongna">청라점</option><option value="icheon">이천점</option><option value="pusan">부산서면점</option><option value="pusancentum">부산센텀점</option><option value="daegu">대구점</option><option value="ulsan">울산점</option><option value="pohang">포항점</option><option value="changwon">창원점</option><option value="gumi">구미점</option><option value="chunan">천안점</option><option value="cheongju">청주점</option><option value="daejeon">대전점</option><option value="sejong">세종점</option><option value="gwangju">광주점</option><option value="jeonju">전주점</option><option value="sooncheon">순천점</option><option value="wonju">원주점</option><option value="jeju">제주점</option></select> -->
+            </li>
+            <li>
+              <select name="q_counsel_treat" id="m_quick_ctreat">
+                <option value="">진료선택</option>
+                <option value="CONTACT">내원상담</option>
+                <option value="UNTACT">비대면(電話相談)</option>
+              </select>
+            </li>
+            <li>
+              <input type="text" name="q_counsel_name" value="" id="m_quick_cname" placeholder="이름">
+            </li>
+            <li class="q_tel">
+              <select name="q_counsel_phone_01" id="m_quick_cphone_01">
+                <option value="010">010</option>
+                <option value="017">017</option>
+                <option value="018">018</option>
+                <option value="019">019</option>
+              </select>
+              <input type="text" name="q_counsel_phone_02" id="m_quick_cphone_03" maxlength="4" class="phone_num" autocomplete="no">
+              <input type="text" name="q_counsel_phone_03" id="m_quick_cphone_02" maxlength="4" class="phone_num" autocomplete="no">
+            </li>
+            <li>
+              <input type="password" name="q_counsel_pwd" value="" id="m_quick_cpwd" placeholder="비밀번호">
+            </li>
+            <li>
+              <input type="text" name="q_counsel_title01" value="" id="m_quick_ctitle01" placeholder="제목">
+            </li>
+            <li>
+              <textarea cols="50" rows="10" name="q_counsel_content01" value="" id="m_quick_ccontent01" placeholder="내용"></textarea>
+            </li>
+            <li class="checkbox">
+              <span class="check_radio"><input type="checkbox" id="check1"><label for="check1"></span>
+              <span class="check_text">개인정보 취급방침에 동의합니다.</span>
+            </li>
+            <li class="submit">
+              <input type="button" onclick="javascript:jsMQuickCounsel();" value="상담 신청">
+            </li>
+          </ul>
+          </form>
+        </div>
+      </div>
+      <div class="cont">
+        <div class="_close"><span></span></div>
+        <h3 class="cont_tit">예약하기</h3>
+        <div class="reservation cont_al">
+          <form method="POST" action="https://jayeon-hanbang.com/online/reserve/quickReserve" accept-charset="UTF-8" class="form-horizontal" enctype="multipart/form-data" id="mquickReserveForm" name="quick_reservation"><input name="_token" type="hidden" value="KEFt2xgRo0W8kagPlm1Dmyjm5jPAVBcbkyOd4GOl">
+          <ul class="reserve_list">
+            <li>
+              <select id="m_quick_rbranch_id" name="q_reserve_branch_id">
+                <option value="" selected="selected">지점선택</option>
+                                <option value="">----- 서울권 -----</option>
+                                                <option value="gangnam">강남본점</option>
+                                                <option value="hongdae">신촌홍대점</option>
+                                                <option value="myungdong">명동을지로점</option>
+                                                <option value="sinlim">신림점</option>
+                                                <option value="nowon">노원점</option>
+                                                <option value="mokdong">목동점</option>
+                                                <option value="sangbong">상봉점</option>
+                                                <option value="yeonsin">은평연신내점</option>
+                                                <option value="cheonho">천호점</option>
+                                                <option value="konkuk">건대점</option>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <option value="">----- 경기권 -----</option>
+                                                                                                                                                                                                                                                                                                                                                                                <option value="suwon">수원점</option>
+                                                <option value="ilsan">일산점</option>
+                                                <option value="bundang">분당점</option>
+                                                <option value="bucheon">부천점</option>
+                                                <option value="gimpo">김포점</option>
+                                                <option value="ansan">안산점</option>
+                                                <option value="dongtan">동탄점</option>
+                                                <option value="pyeongchon">안양평촌점</option>
+                                                <option value="pyeongtaek">평택점</option>
+                                                <option value="incheon">인천점</option>
+                                                <option value="namyangju">남양주점</option>
+                                                <option value="uijeongbu">의정부점</option>
+                                                <option value="cheongna">청라점</option>
+                                                <option value="icheon">이천점</option>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <option value="">----- 경상권 -----</option>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <option value="pusan">부산서면점</option>
+                                                <option value="pusancentum">부산센텀점</option>
+                                                <option value="daegu">대구점</option>
+                                                <option value="ulsan">울산점</option>
+                                                <option value="pohang">포항점</option>
+                                                <option value="changwon">창원점</option>
+                                                <option value="gumi">구미점</option>
+                                                                                                                                                                                                                                                                                                                                                <option value="">----- 충청권 -----</option>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <option value="chunan">천안점</option>
+                                                <option value="cheongju">청주점</option>
+                                                <option value="daejeon">대전점</option>
+                                                <option value="sejong">세종점</option>
+                                                                                                                                                                                                                <option value="">----- 전라권 -----</option>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <option value="gwangju">광주점</option>
+                                                <option value="jeonju">전주점</option>
+                                                <option value="sooncheon">순천점</option>
+                                                                                                                <option value="">----- 강원권 -----</option>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <option value="wonju">원주점</option>
+                                                                                <option value="">----- 제주권 -----</option>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <option value="jeju">제주점</option>
+                                              </select>
+              <!-- <select id="m_quick_rbranch_id" name="q_reserve_branch_id"><option value="" selected="selected">지점선택</option><option value="gangnam">강남본점</option><option value="hongdae">신촌홍대점</option><option value="myungdong">명동을지로점</option><option value="sinlim">신림점</option><option value="nowon">노원점</option><option value="mokdong">목동점</option><option value="sangbong">상봉점</option><option value="yeonsin">은평연신내점</option><option value="cheonho">천호점</option><option value="konkuk">건대점</option><option value="suwon">수원점</option><option value="ilsan">일산점</option><option value="bundang">분당점</option><option value="bucheon">부천점</option><option value="gimpo">김포점</option><option value="ansan">안산점</option><option value="dongtan">동탄점</option><option value="pyeongchon">안양평촌점</option><option value="pyeongtaek">평택점</option><option value="incheon">인천점</option><option value="namyangju">남양주점</option><option value="uijeongbu">의정부점</option><option value="cheongna">청라점</option><option value="icheon">이천점</option><option value="pusan">부산서면점</option><option value="pusancentum">부산센텀점</option><option value="daegu">대구점</option><option value="ulsan">울산점</option><option value="pohang">포항점</option><option value="changwon">창원점</option><option value="gumi">구미점</option><option value="chunan">천안점</option><option value="cheongju">청주점</option><option value="daejeon">대전점</option><option value="sejong">세종점</option><option value="gwangju">광주점</option><option value="jeonju">전주점</option><option value="sooncheon">순천점</option><option value="wonju">원주점</option><option value="jeju">제주점</option></select> -->
+            </li>
+            <li>
+              <select name="q_reserve_treat" id="m_quick_rtreat">
+                <option value="">진료선택</option>
+                <option value="CONTACT">내원상담</option>
+                <option value="UNTACT">비대면(電話相談)</option>
+              </select>
+            </li>
+            <li>
+              <input type="text" name="q_reserve_name" value="" id="m_quick_rname" placeholder="이름">
+            </li>
+            <li class="q_tel">
+              <select name="q_reserve_phone_01" id="m_quick_rphone_01">
+                <option value="010">010</option>
+                <option value="017">017</option>
+                <option value="018">018</option>
+                <option value="019">019</option>
+              </select>
+              <input type="text" name="q_reserve_phone_02" id="m_quick_rphone_02" maxlength="4" class="phone_num" autocomplete="no">
+              <input type="text" name="q_reserve_phone_03" id="m_quick_rphone_03" maxlength="4" class="phone_num" autocomplete="no">
+            </li>
+            <li class="checkbox">
+              <span class="check_radio"><input type="checkbox" id="mcheck1"><label for="mcheck1"></span>
+              <span class="check_text">개인정보 취급방침에 동의합니다. 정보를남겨주시면 예약이 완료됩니다.</span>
+            </li>
+            <li class="submit">
+              <input type="button" onclick="javascript:jsMQuickReserve();" value="예약 신청">
+            </li>
+          </ul>
+          </form>
+        </div>
+      </div>
+      <div class="cont mo-h-util-kakao-box">
+        <div class="_close"><span></span></div>
+        <h3 class="cont_tit">LINE相談</h3>
+        <div class="call_wrap cont_al">
+                    <div class="group_tit"><span>서울권</span></div>
+          <ul class="kakao_wrap">
+                                                            <li><a href="https://pf.kakao.com/_YNCxoM" target="_blank"><img src="https://i.gr-tn.co.kr/jayeon_2020/images/kakao_icon01.png" alt="강남본점"></a></li>
+                                                                                    <li><a href="https://pf.kakao.com/_txoxcys" target="_blank"><img src="https://i.gr-tn.co.kr/jayeon_2020/public/upload/v2_branch/trUYpCMuIJZGbI9cRCYnqKCk04DSbekuaHL8afiT.png" alt="신촌홍대점"></a></li>
+                                                                                    <li><a href="https://pf.kakao.com/_xibZpM" target="_blank"><img src="https://i.gr-tn.co.kr/jayeon_2020/images/kakao_icon03.png" alt="명동을지로점"></a></li>
+                                                                                    <li><a href="https://pf.kakao.com/_xcxfjxoM" target="_blank"><img src="https://i.gr-tn.co.kr/jayeon_2020/images/kakao_icon04.png" alt="신림점"></a></li>
+                                                                                    <li><a href="https://pf.kakao.com/_xixaCxoM" target="_blank"><img src="https://i.gr-tn.co.kr/jayeon_2020/images/kakao_icon05.png" alt="노원점"></a></li>
+                                                                                    <li><a href="https://pf.kakao.com/_lxijxoM" target="_blank"><img src="https://i.gr-tn.co.kr/jayeon_2020/images/kakao_icon06.png" alt="목동점"></a></li>
+                                                                                    <li><a href="https://pf.kakao.com/_xoxkFxad" target="_blank"><img src="https://i.gr-tn.co.kr/jayeon_2020/images/kakao_icon07.png" alt="상봉점"></a></li>
+                                                                                    <li><a href="https://pf.kakao.com/_QDRxgu" target="_blank"><img src="https://i.gr-tn.co.kr/jayeon_2020/images/kakao_icon13.png" alt="은평연신내점"></a></li>
+                                                                                    <li><a href="https://pf.kakao.com/_FjFxnK" target="_blank"><img src="https://i.gr-tn.co.kr/jayeon_2020/images/kakao_icon17.png" alt="천호점"></a></li>
+                                                                                    <li><a href="https://pf.kakao.com/_pCgxaK" target="_blank"><img src="https://i.gr-tn.co.kr/jayeon_2020/images/kakao_icon19.png" alt="건대점"></a></li>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              </ul>
+                    <div class="group_tit"><span>경기권</span></div>
+          <ul class="kakao_wrap">
+                                                                                                                                                                                                                                                                                                            <li><a href="https://pf.kakao.com/_lxjYxhxb" target="_blank"><img src="https://i.gr-tn.co.kr/jayeon_2020/images/kakao_icon08.png" alt="수원점"></a></li>
+                                                                                    <li><a href="https://pf.kakao.com/_FAjxoM" target="_blank"><img src="https://i.gr-tn.co.kr/jayeon_2020/images/kakao_icon14.png" alt="일산점"></a></li>
+                                                                                    <li><a href="https://pf.kakao.com/_zKExfd" target="_blank"><img src="https://i.gr-tn.co.kr/jayeon_2020/images/kakao_icon15.png" alt="분당점"></a></li>
+                                                                                    <li><a href="https://pf.kakao.com/_AixcrK" target="_blank"><img src="https://i.gr-tn.co.kr/jayeon_2020/images/kakao_icon18.png" alt="부천점"></a></li>
+                                                                                    <li><a href="https://pf.kakao.com/_XNxfmK" target="_blank"><img src="https://i.gr-tn.co.kr/jayeon_2020/images/kakao_icon20.png" alt="김포점"></a></li>
+                                                                                    <li><a href="https://pf.kakao.com/_eKLxmK" target="_blank"><img src="https://i.gr-tn.co.kr/jayeon_2020/images/kakao_icon22.png" alt="안산점"></a></li>
+                                                                                    <li><a href="https://pf.kakao.com/_fxaxhxds" target="_blank"><img src="https://i.gr-tn.co.kr/jayeon_2020/public/upload/v2_branch/H8l3eZ36Ra04tgmviDJR7EtFczFro13gecIr5PJt.png" alt="동탄점"></a></li>
+                                                                                    <li><a href="https://pf.kakao.com/_zBdyK" target="_blank"><img src="https://i.gr-tn.co.kr/jayeon_2020/public/upload/v2_branch/rtF1of5HoRIXL8Y6UNjQLIyBP6ohexLkmolyI0n8.png" alt="안양평촌점"></a></li>
+                                                                                    <li><a href="https://pf.kakao.com/_vaNhb" target="_blank"><img src="https://i.gr-tn.co.kr/jayeon_2020/public/upload/v2_branch/aWz1Zt9gpMh70Yaow4HrAF1xHxMpN18Q8ZEXxLuF.png" alt="평택점"></a></li>
+                                                                                    <li><a href="https://pf.kakao.com/_xisxhhb" target="_blank"><img src="https://i.gr-tn.co.kr/jayeon_2020/public/upload/v2_branch/TYyKLri4iL8ykYybDztQiChtdp6Pm0mIE5bIIiLi.png" alt="인천점"></a></li>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              </ul>
+                    <div class="group_tit"><span>경상권</span></div>
+          <ul class="kakao_wrap">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            <li><a href="https://pf.kakao.com/_zxdCxoM" target="_blank"><img src="https://i.gr-tn.co.kr/jayeon_2020/images/kakao_icon09.png" alt="부산서면점"></a></li>
+                                                                                    <li><a href="https://pf.kakao.com/_PHYtu" target="_blank"><img src="https://i.gr-tn.co.kr/jayeon_2020/images/kakao_icon10.png" alt="부산센텀점"></a></li>
+                                                                                    <li><a href="https://pf.kakao.com/_xfrxasT" target="_blank"><img src="https://i.gr-tn.co.kr/jayeon_2020/images/kakao_icon11.png" alt="대구점"></a></li>
+                                                                                    <li><a href="https://pf.kakao.com/_Lxoeqs" target="_blank"><img src="https://i.gr-tn.co.kr/jayeon_2020/public/upload/v2_branch/5ZGTiNmF5vRqh14MkoPMuvj8yRzdPeKLMdtZH8Po.png" alt="울산점"></a></li>
+                                                                                                                        <li><a href="https://pf.kakao.com/_Yxelis" target="_blank"><img src="https://i.gr-tn.co.kr/jayeon_2020/public/upload/v2_branch/5hnyUYJTASOAUwWRTQ8IMOq9vhZb3jfBsXllX2Gx.jpeg" alt="창원점"></a></li>
+                                                                                                                                                                                                                                                                                                          </ul>
+                    <div class="group_tit"><span>충청권</span></div>
+          <ul class="kakao_wrap">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <li><a href="https://pf.kakao.com/_VITxoM" target="_blank"><img src="https://i.gr-tn.co.kr/jayeon_2020/images/kakao_icon12.png" alt="천안점"></a></li>
+                                                                                    <li><a href="https://pf.kakao.com/_ZHxmUxb" target="_blank"><img src="https://i.gr-tn.co.kr/jayeon_2020/images/kakao_icon16.png" alt="청주점"></a></li>
+                                                                                    <li><a href="https://pf.kakao.com/_DcxaxeK" target="_blank"><img src="https://i.gr-tn.co.kr/jayeon_2020/images/kakao_icon21.png" alt="대전점"></a></li>
+                                                                                                                                                                                                          </ul>
+                    <div class="group_tit"><span>전라권</span></div>
+          <ul class="kakao_wrap">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <li><a href="https://pf.kakao.com/_xoxmqxkK" target="_blank"><img src="https://i.gr-tn.co.kr/jayeon_2020/public/upload/v2_branch/QaFjlYI8ilJMoFBh7vQoepNThhr1tV1R8Zsm849k.png" alt="광주점"></a></li>
+                                                                                    <li><a href="https://pf.kakao.com/_pxdxcVb" target="_blank"><img src="https://i.gr-tn.co.kr/jayeon_2020/public/upload/v2_branch/tuAYNLocVQN7Ua1i6gloou8iFbd8opz6dMxUache.png" alt="전주점"></a></li>
+                                                                                                                                  </ul>
+                    <div class="group_tit"><span>강원권</span></div>
+          <ul class="kakao_wrap">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            <li><a href="https://pf.kakao.com/_qDxehb" target="_blank"><img src="https://i.gr-tn.co.kr/jayeon_2020/public/upload/v2_branch/CNxqRnzjROwyLBFEBx3TbXFlKV6xj4NguiSxciQF.png" alt="원주점"></a></li>
+                                                                      </ul>
+                    <div class="group_tit"><span>제주권</span></div>
+          <ul class="kakao_wrap">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <li><a href="https://pf.kakao.com/_YhjQb" target="_blank"><img src="https://i.gr-tn.co.kr/jayeon_2020/public/upload/v2_branch/V3vujCQsSKYrwXc9hQ3QvjrcAm81CSfKplDZg8ue.png" alt="제주점"></a></li>
+                                              </ul>
+                    <div class="kakao_more">
+            <a href="/online/kakaotalk">LINE相談 자세히보기</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="mo_quick">
+    <div class="mo_top"><a href="javascript:void(0)"><img src="https://i.gr-tn.co.kr/jayeon_2020/images/mo_top_btn.jpg" alt="상단이동"></a></div>
+    <ul class="m_q_l_wrap">
+      <li>
+        <a href="javascript:void(0)" class="m_q_l_link">
+          <img src="https://i.gr-tn.co.kr/jayeon_2020/images/f_qicon01.png" alt="">
+          <span>電話相談</span>
+        </a>
+      </li>
+      <li>
+        <a href="javascript:void(0)" class="m_q_l_link">
+          <img src="https://i.gr-tn.co.kr/jayeon_2020/images/f_qicon02.png" alt="">
+          <span>온라인 상담</span>
+        </a>
+      </li>
+      <li>
+        <a href="javascript:void(0)" class="m_q_l_link">
+          <img src="https://i.gr-tn.co.kr/jayeon_2020/images/f_qicon03.png" alt="">
+          <span>예약하기</span>
+        </a>
+      </li>
+      <li>
+        <a href="javascript:void(0)" class="m_q_l_link last_child">
+          <img src="https://line.me/static/c5bc5abac963fd619ec6d22240641a90/4b2df/icon-line.png" alt="">
+          <span>LINE相談</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+  <!-- //mobile_fixed_quick_menu -->
+</div>
+
+<script src="https://jayeon-hanbang.com/js/util.js" defer></script>
+<script src="https://jayeon-hanbang.com/js/wow.min.js"></script>
+<script>
+  new WOW({})
+    .init();
+</script>
+<script src="https://jayeon-hanbang.com/js/lightbox/js/lightbox-plus-jquery.min.js"></script>
+<script src="https://jayeon-hanbang.com/js/jquery.bxslider.js"></script>
+<script src="https://jayeon-hanbang.com/js/jquery.easing.1.3.js"></script>
+<script src="https://jayeon-hanbang.com/js/main.js?v=230221"></script>
+<script src="https://jayeon-hanbang.com/js/header.js"></script>
+<script src="https://jayeon-hanbang.com/js/contents.js"></script>
+<script src="https://jayeon-hanbang.com/js/owl/owl.carousel.min.js"></script>
+<script src="https://jayeon-hanbang.com/js/jquery.counterup.js"></script>
+<script src="https://jayeon-hanbang.com/js/jquery.waypoints.min.js"></script>
+<!-- <script src="https://jayeon-hanbang.com/js/jquery.kxbdmarquee.js"></script> -->
+
+<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
+<script src="https://jayeon-hanbang.com/js/jquery.ui.1.21.1/jquery-ui.min.js"></script>
+<script src="https://jayeon-hanbang.com/js/pc_quick.js"></script>
+<script src="https://jayeon-hanbang.com/js/mobile_quick.js"></script>
+
+<!-- 네이버 공통 적용 스크립트 -->
+<script type="text/javascript">
+  if (!wcs_add) var wcs_add = {};
+  wcs_add["wa"] = "s_273b675a451a";
+  if (!_nasa) var _nasa = {};
+  // if (window.wcs) {
+  wcs.inflow("jayeon-hanbang.com");
+  wcs_do(_nasa);
+  // }
+</script>
+
+<script>
+  $(function() {
+    $(document).on('keyup', '.phone_num', function(e) {
+      $(this).val(allowOnlyNumber($(this).val()));
+      if ($(this).val().length == 4)
+        $(this).next(".phone_num").focus();
+    });
+
+    $(document).on('blur', '.phone_num', function(e) {
+      $(this).val(allowOnlyNumber($(this).val()));
+    });
+  });
+</script>
+{% endblock %}
