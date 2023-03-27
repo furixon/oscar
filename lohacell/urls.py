@@ -33,6 +33,6 @@ urlpatterns = [
     path('lohacell_system/', views.lohacell_system, name='lohacell_system'),
     path('research/', views.research, name='research'),
     path('medicine/', views.medicine, name='medicine'),
-    
+    path('notice/', views.notice, name='notice'),
     
 ]

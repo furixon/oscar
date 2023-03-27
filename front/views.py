@@ -55,3 +55,9 @@ def medicine(request):
     template = 'oscar/medicine.html'
     context = {}
     return render(request, template, context)
+
+
+def notice(request):
+    template = 'oscar/notice.html'
+    context = {}
+    return render(request, template, context)
