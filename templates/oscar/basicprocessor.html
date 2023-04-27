@@ -1,0 +1,1376 @@
+{% load static %}
+
+
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  
+
+<!-- 브라우저 호환성 보기 2015.04.13 박상귀 -->
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+<!-- 가맹점 설정에 따라 title 분기 처리 2019.04.03 -->
+
+  <title>EXIMBAY</title>
+
+
+
+<link href="https://img-cld.eximbay.com/Gateway/BasicProcessor/2.x/css/bootstrap.css" rel="stylesheet" media="screen">
+<link href="https://img-cld.eximbay.com/Gateway/BasicProcessor/2.x/css/rcommon.css" type="text/css" rel="stylesheet">
+<link href="https://img-cld.eximbay.com/Gateway/BasicProcessor/2.x/css/rlayout.css" type="text/css" rel="stylesheet">
+<link href="https://img-cld.eximbay.com/Gateway/BasicProcessor/2.x/css/rjquery.selectbox.css" type="text/css" rel="stylesheet" />
+
+<!--[if IE]>
+  <script type="text/javascript" src="/Gateway/BasicProcessor/2.x/js/html5.js"></script>
+<![endif]-->
+<!--[if IE]>
+  <script type="test/javascript" src="/Gateway/BasicProcessor/2.x/js/IE9.js"></script>
+<![endif]-->
+<script src="https://img-cld.eximbay.com/Gateway/BasicProcessor/2.x/js/jquery-1.7.2.min.js" type="text/javascript"></script>
+<script src="https://img-cld.eximbay.com/Gateway/BasicProcessor/2.x/js/json2.js" type="text/javascript"></script>
+<script src="https://img-cld.eximbay.com/Gateway/BasicProcessor/2.x/js/jquery.selectbox-0.2.js" type="text/javascript"></script>
+<script src="https://img-cld.eximbay.com/Gateway/BasicProcessor/2.x/js/bootstrap.min.js"></script>
+<script src="https://img-cld.eximbay.com/Gateway/BasicProcessor/2.x/js/spin.min.js"></script>
+
+<script src="https://img-cld.eximbay.com/Gateway/BasicProcessor/2.x/js/placeholders.min.js"></script>
+ 
+
+  <script src="https://img-cld.eximbay.com/Gateway/BasicProcessor/2.x/js/checkIframe.js"></script>
+                                                                                                                                                              
+  <script src='https://h.online-metrix.net/fp/tags.js?org_id=k8vif92e&session_id=krpartnersC0BAE368B53967E0F87F2AD2AD08E0C0' type='text/javascript'></script>
+  
+  <script type="text/javascript">
+  var spinner = "";
+  var target = "";
+  var opts = "";
+  var chgLang = "";
+  var tid =""; 
+  var ctype ="C000";
+  var dhit = false; 
+  var dccChk = true; 
+  var params = "mid=2EB7D0E199&ref=20230427-86283";
+  
+  $(document).ready(function() {
+    
+    
+    check_Iframe(params); // iframe 접속 체크
+    
+    var frm = document.regForm;
+    $("#l_id").selectbox();
+    //hideBlockLoadingBar();      
+    if(tid != "" && ctype !=""){
+      $("select[name=month]").attr("readonly",true);
+      $("select[name=year]").attr("readonly",true);
+      getCurrencyProc(ctype,function(str){
+         if (str > 0) {
+           $("input:checkbox[name='agree']").attr("checked", true);
+           if(frm.apprvcurrency.value == frm.quotecurrency.value) submitStep2();
+         }
+      }); 
+      
+      //getCurrencyProc(ctype);
+
+    }else if(ctype=="C024"){
+       checkApprovAmount(ctype);  
+    }else{
+      $("#month").selectbox();
+      $("#year").selectbox();
+    }
+    if(chgLang != "") {
+      setCurrencyProc();
+    }
+    
+    opts = {
+          lines: 12, // The number of lines to draw
+          length: 40, // The length of each line
+          width: 12, // The line thickness
+          radius: 30, // The radius of the inner circle
+          corners: 1, // Corner roundness (0..1)
+          rotate: 47, // The rotation offset
+          direction: 1, // 1: clockwise, -1: counterclockwise
+          color: '#000', // #rgb or #rrggbb or array of colors
+          speed: 1.2, // Rounds per second
+          trail: 31, // Afterglow percentage
+          shadow: false, // Whether to render a shadow
+          hwaccel: false, // Whether to use hardware acceleration
+          className: 'spinner', // The CSS class to assign to the spinner
+          zIndex: 2e9, // The z-index (defaults to 2000000000)
+          top: '50%', // Top position relative to parent
+          left: '50%' // Left position relative to parent
+        };
+
+//    $("#fname").keyup(function(){
+//      $(this).val($(this).val().replace(/[0-9]|[^\!-z\s]/gi,""));
+//    });
+    $("input.input01").keyup(function(){
+      $(this).val($(this).val().replace(/[0-9]|[^\!-z\s]/gi,""));
+    });
+    
+    //초기화 시키기
+      $("input.input01").bind('blur', function(event) {
+          var input_element = this;
+          var val = $(input_element).val();
+          //var pattern1 = /\s/g; 띄워쓰기
+          if(!(/^[a-zA-Z\s]+$/.test(val))){
+          //if (pattern.test(val) || !(/^[0-9]|[\!-z\s]+$/gi.test(val))){   
+            $(input_element).val("");
+          }     
+      });
+  });
+
+  function langChange(lang){
+    var frm = document.regForm;
+
+    frm.lang.value = lang;
+    frm.action = "/Gateway/BasicProcessor/2.x/rstep1.jsp";
+    frm.submit();
+  }
+
+  function itemLayer(val){
+    if(val == "open")
+      $("#itemLayer").show();
+    else
+      $("#itemLayer").hide();
+  }
+
+  function infoChange(val){
+    var frm = document.regForm;
+
+    if(val == "change"){
+      $("#binfo").hide();
+      $("#cinfo").show();
+    }else{
+      if(val == "apply"){
+        if(frm.first_name.value == ""){
+          alert("名を入力してください.");
+          frm.first_name.focus();
+          return false;
+        }else if(frm.last_name.value == ""){
+          alert("姓を入力してください.");
+          frm.last_name.focus();
+          return false;
+        }else if(frm.Address_1.value == ""){
+          alert("請求書住所を入力してください.");
+          frm.Address_1.focus();
+          return false;
+        }else if(frm.City.value == ""){
+          alert("カード請求地の都/市名を入力してください.");
+          frm.City.focus();
+          return false;
+        }else if(frm.Zip_code.value == ""){
+          alert("郵便番号を入力してください.");
+          frm.Zip_code.focus();
+          return false;
+        }else if(frm.Country.value == ""){
+          alert("国を選択してください.");
+          frm.Country.focus();
+          return false;
+        }else{
+          $.ajax({
+            url: '/Gateway/BasicProcessor/2.x/step_billing_change.do',
+            data: $("#regForm").serialize(),
+            type: 'POST',
+            datatype: 'json',
+            timeout: 10000,
+            error: function() {
+              alert("Please try again in a few minutes.");
+            },
+            success: function (data) {
+              var contact = JSON.parse(data);
+
+              frm.paramKey.value = contact.paramKey;
+              $("#ninfo").text("");
+              $("#ninfo").append(contact.fname+" "+contact.lname+"<br>"+contact.street1+" "+contact.street2+"<br>"+contact.city+" "+contact.state+" "+contact.postalcode+"<br>"+contact.country);
+            }
+          });
+        }
+      }
+      $("#binfo").show();
+      $("#cinfo").hide();
+    }
+  }
+
+  function checkNum(field){
+    if(event.keyCode >= 48 && event.keyCode <= 57) return true;
+    else return false;
+  }
+
+  function checkDigits(from, to, digits){
+    if(from.value.length == digits) to.focus();
+  }
+
+  function checkCard(){
+    var frm = document.regForm;
+    if(frm.viewcardno1.value.length == 4 && frm.viewcardno2.value.length == 4 && frm.viewcardno3.value.length == 4 && frm.viewcardno4.value.length > 2 && tid =="")
+      //getCurrencyProc(frm.cardtype.value);
+      if(dccChk){
+        dccChk = false;
+        getCurrencyProc(frm.cardtype.value,function(str){
+      })
+    };  
+  }
+
+  
+  function getCurrencyProc(cardtype,callback){
+    var frm = document.regForm;
+    var path = "https://img-cld.eximbay.com/Gateway/BasicProcessor/2.x";
+    var card = "";
+
+    $("#loadingModal").show();
+
+    $.ajax({
+      url: '/Gateway/BasicProcessor/2.x/step_cur_proc.do',
+      data: $("#regForm").serialize(),
+      type: 'POST',
+      datatype: 'json',
+      timeout: 10000,
+      error: function() {
+        alert("Please try again in a few minutes.");
+        $("#loadingModal").hide();
+        if (typeof callback == 'function') {
+            callback(0);
+        }
+      },
+      success: function (data) {
+        var contact = JSON.parse(data);
+        if(contact.rescode == "0000"){
+          frm.dcctype.value = contact.dcctype;
+          frm.apprvcurrency.value = contact.apprvcurrency;
+          frm.apprvamount.value = contact.apprvamount;
+          frm.mcpstatus.value = contact.mcpstatus;
+          frm.quotecurrency.value = contact.quotecurrency;
+          frm.quoteamount.value = contact.quoteamount;
+          frm.payto.value = contact.payto;
+          frm.chgLang.value = "C";
+          
+          setCurrencyProc();
+          
+          if(contact.cardtype == "C000")
+            card = "visa";
+          else if(contact.cardtype == "C001")
+            card = "master";
+          else if(contact.cardtype == "C002")
+            card = "amex";
+          else if(contact.cardtype == "C003")
+            card = "jcb";
+          
+          $("#cardimg").remove();
+          if(card != ""){ 
+            $("#card").append("<img id=\"cardimg\" src=\""+path+"/images/"+card+".gif\" alt=\"card_logo\">");
+          }else{
+            alert("Invaild Card Number.");
+          }
+        }else{
+          alert(contact.resmsg);
+          $('#card').children().attr('value', "");
+        }
+        
+        $("#loadingModal").hide();
+        
+        if (typeof callback == 'function') {
+          callback(1); 
+        }
+      },
+      complete: function(){
+        dccChk = true;
+      }
+    });
+    
+
+    
+
+  }
+
+  function setCurrencyProc(){
+    var mcpText = null;
+    var normalText = null;
+    var frm = document.regForm;
+    var mcpstatus = frm.mcpstatus.value;
+    var cur = frm.cur.value;
+    var amt = frm.amt.value;
+    var apprvcur = frm.apprvcurrency.value;//표시 되야 되는 통화(승인 통화 랑 다를 수 있다 DC06의 경우)
+    var apprvamount = frm.apprvamount.value;
+    var quotecurrency = frm.quotecurrency.value;
+    var quoteamount = frm.quoteamount.value;
+    var payto = frm.payto.value;    
+    var dcctype = frm.dcctype.value;
+    var noticeMsg = "* お客様のクレジットカード請求書には%PAYTO%で表記され%AMOUNT%金額が請求されます.";
+    var merchantid = "2EB7D0E199";
+    
+    noticeMsg = noticeMsg.replace("%PAYTO%", payto);
+    
+    
+    if(dcctype == "DC07" || (merchantid == "3335091B87" || merchantid == "12426D596C" || merchantid == "A98A439942" || merchantid == "8B49FA36FD" || merchantid == "197613B3C3" || merchantid == "197613B3C3" || merchantid == "8B49FA36FD" || merchantid == "31EE0CB911" || merchantid == "2925BE65F9" || merchantid == "1B8E818555" || merchantid == "6AE8EE853F" || merchantid == "3484BA9EE8")){ //DC07로 태우는 가맹점 설정 하드 코딩 되어 있는 DC06 mid
+      document.getElementById('chgvalue').innerHTML = '決済金額';
+      normalText = "<span><label>"+quotecurrency+" "+quoteamount+"</label></span>";   
+      $("#confirmText")[0].innerHTML = normalText;
+      noticeMsg = noticeMsg.replace("%AMOUNT%", "<span id='paymentCurrency'>"+quotecurrency+"&nbsp;"+quoteamount+"</span>");
+      frm.finalCurrencyChoice.value = quotecurrency;
+    }else if(dcctype == "DC06" && mcpstatus == "0" && apprvcur != quotecurrency){
+      document.getElementById('chgvalue').innerHTML = '通貨選択';
+      mcpText = "<span><label><input type=\"radio\" name=\"dcc_payment\" onclick=\"changeChoice(true);\" checked=\"checked\"><font color=\"blue\"> "+quotecurrency+" "+quoteamount+"</font></label></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+      normalText = "<span><label><input type=\"radio\" name=\"dcc_payment\" onclick=\"changeChoice(false);\"> "+apprvcur+" "+apprvamount+"</label></span>";
+      $("#confirmText")[0].innerHTML = mcpText+normalText;
+      noticeMsg = noticeMsg.replace("%AMOUNT%", "<span id='paymentCurrency'>"+quotecurrency+"&nbsp;"+quoteamount+"</span>");
+      frm.finalCurrencyChoice.value = quotecurrency;
+    }else if(dcctype == "DC06" && mcpstatus == "0" && apprvcur == quotecurrency){
+      document.getElementById('chgvalue').innerHTML = '通貨選択';
+      normalText = "<span><label>"+quotecurrency+" "+quoteamount+"</label></span>";     
+      $("#confirmText")[0].innerHTML = normalText;
+      noticeMsg = noticeMsg.replace("%AMOUNT%", "<span id='paymentCurrency'>"+quotecurrency+"&nbsp;"+quoteamount+"</span>");
+      frm.finalCurrencyChoice.value = quotecurrency;
+    }else if(dcctype == "DC02" && mcpstatus == "0" && apprvcur != quotecurrency){
+      document.getElementById('chgvalue').innerHTML = '通貨選択';
+      mcpText = "<span><label><input type=\"radio\" name=\"dcc_payment\" onclick=\"changeChoice(true);\" checked=\"checked\"><font color=\"blue\"> "+quotecurrency+" "+quoteamount+"</font></label></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+      normalText = "<span><label><input type=\"radio\" name=\"dcc_payment\" onclick=\"changeChoice(false);\"> "+apprvcur+" "+apprvamount+"</label></span>";
+      $("#confirmText")[0].innerHTML = mcpText+normalText;
+      noticeMsg = noticeMsg.replace("%AMOUNT%", "<span id='paymentCurrency'>"+quotecurrency+"&nbsp;"+quoteamount+"</span>");
+      frm.finalCurrencyChoice.value = quotecurrency;
+    }else if(dcctype == "DC02" && apprvcur == quotecurrency){
+      document.getElementById('chgvalue').innerHTML = '決済金額';
+      normalText = "<span><label>"+quotecurrency+" "+quoteamount+"</label></span>";     
+      $("#confirmText")[0].innerHTML = normalText;
+      noticeMsg = noticeMsg.replace("%AMOUNT%", "<span id='paymentCurrency'>"+quotecurrency+"&nbsp;"+quoteamount+"</span>");
+      frm.finalCurrencyChoice.value = quotecurrency;
+    }else if (dcctype == "DC02" && mcpstatus == "1" ){
+      document.getElementById('chgvalue').innerHTML = '決済金額';
+      normalText = "<span><label>"+quotecurrency+" "+quoteamount+"</label></span>";     
+      $("#confirmText")[0].innerHTML = normalText;
+      noticeMsg = noticeMsg.replace("%AMOUNT%", "<span id='paymentCurrency'>"+quotecurrency+"&nbsp;"+quoteamount+"</span>");
+      frm.finalCurrencyChoice.value = quotecurrency;
+    }else if(dcctype =="" && cur != apprvcur){
+      document.getElementById('chgvalue').innerHTML = '決済金額';
+      if (cur == "VND") {
+        amt = Math.floor(amt);
+      }
+      
+      var nonDccNoticeMsg = " (クレジットカード請求金額は%CUR% %AMOUNT%とは異なる場合がございます。)";
+      nonDccNoticeMsg = nonDccNoticeMsg.replace("%AMOUNT%", apprvamount);
+      nonDccNoticeMsg = nonDccNoticeMsg.replace("%CUR%", apprvcur);
+      
+      mcpText = "<span><label>"+cur+" "+amt+"</label></span>&nbsp;&nbsp;/&nbsp;&nbsp;";
+      normalText = "<span><label><font color=\"blue\"> "+apprvcur+" "+apprvamount+"</font></label></span>"; 
+      $("#confirmText")[0].innerHTML = mcpText+normalText;
+      noticeMsg = noticeMsg.replace("%AMOUNT%", "<span id='paymentCurrency'>"+apprvcur+"&nbsp;"+apprvamount+"</span>");
+      noticeMsg = noticeMsg + nonDccNoticeMsg;
+      frm.finalCurrencyChoice.value = apprvcur;
+    }else if (cur == apprvcur){
+      document.getElementById('chgvalue').innerHTML = '決済金額';
+      normalText = "<span><label>"+apprvcur+" "+apprvamount+"</label></span>";    
+      $("#confirmText")[0].innerHTML = normalText;
+      noticeMsg = noticeMsg.replace("%AMOUNT%", "<span id='paymentCurrency'>"+apprvcur+"&nbsp;"+apprvamount+"</span>");
+      frm.finalCurrencyChoice.value = apprvcur;
+    }
+    
+//    if(mcpstatus == "0"){ //DCC
+//      $("#confirmText")[0].innerHTML = mcpText+normalText;
+//      noticeMsg = noticeMsg.replace("%AMOUNT%", "<span id='paymentCurrency'>"+quotecurrency+"&nbsp;"+quoteamount+"</span>");
+//      frm.finalCurrencyChoice.value = quotecurrency;
+//    }else if(mcpstatus == "1"){
+//      $("#confirmText")[0].innerHTML = normalText;
+//      noticeMsg = noticeMsg.replace("%AMOUNT%", "<span id='paymentCurrency'>"+apprvcur+"&nbsp;"+apprvamount+"</span>");
+//      frm.finalCurrencyChoice.value = apprvcur;
+//      $("#confirmText input[name=dcc_payment]").attr("checked", "checked");
+//    }else if(mcpstatus == ""){
+//      $("#confirmText")[0].innerHTML = normalText;
+//      noticeMsg = noticeMsg.replace("%AMOUNT%", "<span id='paymentCurrency'>"+apprvcur+"&nbsp;"+apprvamount+"</span>");
+//      frm.finalCurrencyChoice.value = apprvcur;
+//      $("#confirmText input[name=dcc_payment]").attr("checked", "checked");
+//    }
+    $("#payto").html(noticeMsg);
+  }
+
+  function changeChoice(flg){
+    var frm = document.regForm;
+    var cur = frm.cur.value;
+    var amt = frm.amt.value;
+    var quotecurrency = frm.quotecurrency.value;
+    var quoteamount = frm.quoteamount.value;
+
+    if(flg){ //DCC
+      frm.finalCurrencyChoice.value = frm.quotecurrency.value;
+      $("#paymentCurrency").text(quotecurrency+" "+quoteamount);
+    }else{ //normal
+      frm.finalCurrencyChoice.value = frm.cur.value;
+      if (cur == "VND") {
+        amt = Math.floor(amt);
+      }
+      $("#paymentCurrency").text(cur+" "+amt);
+    }
+  }
+
+  function submitStep2(){
+    if(checkStep())
+      paymentProc();
+  }
+
+  function checkStep(){
+    var frm = document.regForm;
+    var cardtype = frm.cardtype.value;
+    var vanCode = "";
+    
+    var requiredEmailYN = "N";
+    
+    if(cardtype == "C024"){
+      if(frm.email && frm.email.value == ""){
+        
+        
+        if ( requiredEmailYN == "Y" ) {
+          
+        } else {
+          
+          alert("Eメールアドレスを入力してください.");
+          frm.email.focus();
+        }
+        
+      }else if(frm.email && (frm.email.value.indexOf("@") == -1 || frm.email.value.indexOf(".") == -1
+        || frm.email.value.indexOf(".") == frm.email.value.length-1)){
+        
+        
+        if ( requiredEmailYN == "Y" ) {
+          
+        } else {
+          
+          alert("Eメールアドレスが正しくありません.");
+          frm.email.focus();
+        }
+        
+      }else if(frm.econtel && frm.econtel.value == ""){
+        alert("次のお客様の連絡先は [コンビニ決済 & 銀行]を通じて決済する時、必ず必要な情報です。\r\nお客様の連絡先が正確かご確認してください。(10 ~ 11 桁数字だけ入力できます。)");
+        frm.econtel.focus();
+      }else if(frm.agree.checked == false){
+        alert("ご利用約款 で同意して下さい。");
+        frm.agree.focus();
+      }else{
+        return true;
+      }
+      return false;
+    }else if(cardtype == "C023"){
+      if(vanCode == "V039") {
+        return true;
+      } else {  
+        if(frm.viewcardno.value == ""){
+          alert("カード番号を入力してください.");
+          frm.viewcardno.focus();
+        }else{
+          return true;
+        }
+      }
+    }else{
+      if(frm.viewcardno1.value == "" || frm.viewcardno1.value.length < 4){
+        alert("カード番号を入力してください.");
+        frm.viewcardno1.focus();
+      }else if(frm.viewcardno2.value == "" || frm.viewcardno2.value.length < 4){
+        alert("カード番号を入力してください.");
+        frm.viewcardno2.focus();
+      }else if(frm.viewcardno3.value == "" || frm.viewcardno3.value.length < 4){
+        alert("カード番号を入力してください.");
+        frm.viewcardno3.focus();
+      }else if(frm.viewcardno4.value == "" || frm.viewcardno4.value.length < 3){
+        alert("カード番号を入力してください.");
+        frm.viewcardno4.focus();
+      }else if(frm.month.value == ""){
+        alert("有効期間を選択してください.");
+        frm.month.focus();
+      }else if(frm.year.value == ""){
+        alert("有効期間を選択してください.");
+        frm.year.focus();
+      
+      }else if(frm.cvc.value == ""){
+        alert("指示によってCVCまたは4DBCを入力してください。");
+        frm.cvc.focus();
+      
+      
+      
+            
+        }else if(frm.fname.value == ""){
+          alert("名を入力してください.");
+          frm.fname.focus();  
+        }else if(frm.lname.value == ""){
+          alert("姓を入力してください.");
+          frm.lname.focus();
+      
+      
+      
+      
+      }else if(frm.agree.checked == false){
+        alert("ご利用約款 で同意して下さい。");
+        frm.agree.focus();
+      }else{
+        return true;
+      }
+      return false;
+    }
+  }
+
+  
+  
+  function paymentProc(){
+    $("#loadingdiv").show();
+    target = document.getElementById("loadingid");
+    spinner = new Spinner(opts).spin(target);
+    //showBlockLoadingBar();
+    var frm = document.regForm;
+    var cardtype = frm.cardtype.value;
+    var url;
+    //00221, 00222
+    var emailMsg = "詳細につきましては%EMAIL%に配信しました。お客様の受信拒否又はメールサービス提供者により、メール受信ができない場合もあります。メールが届かなかったり、文字化けのメールが受信された場合にはonlinesupport@eximbay.com まで問い合わせください。";
+    /* var limitMsg = "次のURLに接続して決済の方法を選択してください。<br> 支払い期限：%PAY_DATE_LIMIT% <br> Payment Site URL : %PAYMENT_URL%"; */
+    var limitMsg = "<b>「閉じる」</b><font color=red>ボタンを押さずに、</font> (%PAYMENT_URL%)にアクセスいただけますようお願い申し上げます。<br> ご希望の決済手段をお選びいただいた上、「お支払いの流れ」をご確認いただけます。 <br><br><b> 支払い期限：ご注文いただいた日にちから%PAY_DATE_LIMIT%以内</b>";
+    var contactMsg = "決済案内メールを受信できなかった場合、あるいは支払い期限が過ぎた場合には、onlinesupport@eximbay.comにご連絡ください。";
+      if('Y' == "Y" && '' == "" && frm.holder) 
+          frm.holder.value = frm.fname.value + " " + frm.lname.value;
+
+    if(cardtype != "C024" && cardtype != "C023"){
+      url = "/Gateway/BasicProcessor/2.x/step_confirm.do";
+    }else if(cardtype == "C024"){
+      url = "/Gateway/BasicProcessor/2.x/step_econtext.do";
+    }else{
+      url = "/Gateway/BasicProcessor/2.x/step_unionpay0.do";
+    }
+    
+    if(cardtype == "C024"){
+      $("#loadingdiv").show();
+      $.ajax({
+        url: url,
+        data: $("#regForm").serialize(),
+        type: 'POST',
+        datatype: 'json',
+        timeout: 50000,
+        error: function() {
+          alert("Please try again in a few minutes.");
+          $("#loadingdiv").hide();
+        },
+        success: function (data) {
+          var contact = JSON.parse(data);
+          var cfrm = document.retForm;
+
+          cfrm.rescode.value = contact.rescode;
+          cfrm.resmsg.value = contact.resmsg;
+          cfrm.cardco.value = contact.cardco;
+          cfrm.payto.value = contact.payto;
+          cfrm.fgkey.value = contact.fgkey;
+          cfrm.paymentURL.value = contact.paymenturl;
+          if(contact.dcctype == "KD"){
+            cfrm.foreigncur.value = contact.foreigncur;
+            cfrm.foreignamt.value = contact.foreignamt;
+            cfrm.convrate.value = contact.convrate;
+            cfrm.rateid.value = contact.rateid;
+          }
+
+          if(cardtype == "C024"){
+
+            if(contact.rescode=="0000"){
+              cfrm.status.value = "Registered";
+              cfrm.transid.value = contact.transid;
+              cfrm.resdt.value = contact.resdt;
+
+              $("#restitle").text("注文完了");
+              limitMsg = limitMsg.replace("%PAY_DATE_LIMIT%", contact.limitday+" 日");
+              limitMsg = limitMsg.replace("%PAYMENT_URL%",  "<a href="+contact.paymenturl+" target='_blank'>"+contact.paymenturl+"</a>");
+              $("#resmsg").append(limitMsg);
+              emailMsg = emailMsg.replace("%EMAIL%", "<a href=\"mailto:"+contact.email+"\">"+contact.email+"</a>");
+              $("#resmsg").append("<p>"+emailMsg+"</p>");
+            }else{
+              $("#restitle").text("決済失敗");
+              $("#resmsg").append("<p>処理結果 : ["+contact.rescode+"] "+contact.resmsg+"</p>");
+            }
+          }
+          $("#loadingdiv").hide();
+          $("#popup_common").show();
+        }
+      });
+    }else{
+      if(!parent.dhit){
+        parent.dhit = true;
+        if(cardtype != "C023"){
+          frm.target="paymentframe";
+        }
+        frm.action=url;
+        frm.submit();
+        return true;
+      }else{
+        return false;
+      }
+    }
+
+//    $.ajax({
+//      url: url,
+//      data: $("#regForm").serialize(),
+//      type: 'POST',
+//      datatype: 'json',
+//      timeout: 10000,
+//      error: function() {
+//        alert("ajax fail.");
+//        //$("#loadingModal2").hide();
+//        hideBlockLoadingBar();
+//      },
+//      success: function (data) {
+      
+//        var contact = JSON.parse(data);
+//        if(contact.rescode == "0000")
+
+//        else
+
+
+
+//        if(cardtype != "C024"){
+
+
+
+          
+
+//        }
+
+//        if(cardtype == "C024"){
+
+//          emailMsg = emailMsg.replace("%EMAIL%", "<a href=\"mailto:"+contact.email+"\">"+contact.email+"</a>");
+//          $("#resmsg").append("<p>"+emailMsg+"</p>");
+//          limitMsg = limitMsg.replace("%PAY_DATE_LIMIT%", contact.limitday+" days");
+//          $("#resmsg").append("<p>"+limitMsg+"</p>");
+//          contactMsg = contactMsg.replace("onlinesupport@eximbay.com", "<a href=\"mailto:onlinesupport@eximbay.com\">onlinesupport@eximbay.com</a>");
+//          $("#resmsg").append("<p>"+contactMsg+"</p>");
+//        }
+
+//        //$("#loadingModal2").hide();
+//        hideBlockLoadingBar();
+//        $("#popup_common").show();
+//      }
+//    });
+    
+  }
+  function childProc(resData){
+    
+    var pfrm = document.retForm;
+    var resMsg = resData["resmsg"];
+    var lang = "EN";
+    
+    if(resMsg.indexOf('|') != -1){
+      if(lang == 'KR'){
+        resMsg = resMsg.substring(0, '|');
+      }else{
+        resMsg = resMsg.substring(resMsg.indexOf("|") + 1, resMsg.length);
+      }
+    }
+    
+    pfrm.transid.value = resData["transid"];
+    pfrm.rescode.value = resData["rescode"];
+    pfrm.resmsg.value = resData["resmsg"];
+    pfrm.authcode.value = resData["authcode"];
+    pfrm.cardco.value = resData["cardtype"];
+    pfrm.resdt.value = resData["resdt"];
+    pfrm.fgkey.value = resData["fgkey"];
+    
+    pfrm.cardholder.value = resData["cardholder"];
+    pfrm.accesscountry.value = resData["accesscountry"];
+    pfrm.allowedpvoid.value = resData["allowedpvoid"];
+    pfrm.cardno1.value = resData["cardno1"];
+    pfrm.cardno4.value = resData["cardno4"];
+    pfrm.foreigncur.value = resData["foreigncur"];
+    pfrm.foreignamt.value = resData["foreignamt"];
+    pfrm.convrate.value = resData["convrate"];
+    pfrm.rateid.value = resData["rateid"];
+    pfrm.status.value = resData["status"];
+    pfrm.paymentURL.value = resData["paymentURL"];
+    pfrm.payto.value = resData["payto"];    
+    pfrm.dm_decision.value = resData["dm_decision"];
+    pfrm.dm_reject.value = resData["dm_reject"];
+    pfrm.dm_review.value = resData["dm_review"];
+    pfrm.paymethod.value = resData["paymethod"];    
+    pfrm.tokenID.value = resData["tokenID"];
+      
+    if(resData["rescode"]=="0000"){
+      $("#restitle").text("完了"); 
+      $("#resmsg").append("<p>商品名 : "+resData["product"]+"</p>");
+      $("#resmsg").append("<p>カード番号 : "+resData["cardno1"]+" - **** - **** - "+resData["cardno4"]+"</p>");
+      $("#resmsg").append("<p>決済金額 : "+resData["currency"]+" "+resData["amount"]+"</p>");
+      $("#resmsg").append("<p>決済手段 : "+resData["cardtype"]+"</p>"); 
+      $("#resmsg").append("<p>承認番号 : "+resData["authcode"]+"</p>");
+      $("#resmsg").append("<p>処理結果 : ["+resData["rescode"]+"] "+resMsg+"</p>");
+      
+    }else{
+      $("#restitle").text("決済失敗");
+      $("#resmsg").append("<p>カード番号 : "+resData["cardno1"]+" - **** - **** - "+resData["cardno4"]+"</p>");
+      $("#resmsg").append("<p>決済金額 : "+resData["currency"]+" "+resData["amount"]+"</p>");
+      $("#resmsg").append("<p>処理結果 : ["+resData["rescode"]+"] "+resMsg+"</p>");
+    }
+
+//    target = document.getElementById("loadingid");
+//    spinner = new Spinner(opts).spin(target);
+    spinner.stop();
+    $("#loadingdiv").hide();
+    
+    
+      $("#popup_common").show();
+    
+  }
+
+  
+  function viewWindow(val){
+    window.open("/Gateway/BasicProcessor/230/include/"+val, "termsofuse", "scrollbars=yes,status=no,toolbar=no,resizable=yes,location=no,menu=no,width=415,height=565");
+  }
+  
+  function viewWindow1(val){
+    window.open("/Gateway/BasicProcessor/230/include/"+val, "termsofuse", "scrollbars=yes,status=no,toolbar=no,resizable=yes,location=no,menu=no,width=415,height=565");
+  }
+  
+  function viewWindow2(val) {
+    window.open("/Gateway/BasicProcessor/230/include/"+val, "termsofuse", "scrollbars=yes,status=no,toolbar=no,resizable=yes,location=no,menu=no,width=415,height=565");
+  }
+  function viewWindow3(val) {
+    window.open("/Gateway/BasicProcessor/230/include/"+val, "termsofuse", "scrollbars=yes,status=no,toolbar=no,resizable=yes,location=no,menu=no,width=415,height=565");
+  }
+
+  function closeStep1(){
+    var frm = document.regForm;
+
+    frm.rescode.value="XXXX";
+    frm.resmsg.value="決済がキャンセルされました. ";
+
+    if(confirm("決済をキャンセルしますか?")){
+      
+        
+        frm.action = "/Gateway/BasicProcessor/2.x/close_utf8.jsp";
+        
+        frm.submit();
+      
+    }
+  }
+
+  function closeStep3(){
+    var frm = document.retForm;
+    
+    frm.target = "";
+    frm.action = "https://jp.jaimdangmall.com/main/exec.php?exec_file=card.eximbay/card_pay.exe.php";
+    frm.submit();
+    
+    return;
+  }
+
+  
+  
+  function checkApprovAmount(cardtype){
+    var mcpText = null;
+    var normalText = null;
+    var frm = document.regForm;
+
+    $.ajax({
+      url: '/Gateway/BasicProcessor/2.x/mstep_appr_proc.do',
+      data: 'cardType='+cardtype+'&paramKey=2EB7D0E19910F0F4DBC907294FF7A55D494DC1AFC118AF469C6D',
+      type: 'GET',
+      datatype: 'text',
+      timeout: 10000,
+      error: function() {
+        alert("Please try again in a few minutes.");
+      },
+      success: function (data) {
+        if(typeof String.prototype.trim !== 'function') {
+          String.prototype.trim = function() {
+            return this.replace(/^\s+|\s+$/g, '');
+          }
+        }
+        data = data.split("&");
+        var apprvCur = data[0].trim();
+        var apprvAmt = data[1].trim();
+
+        if("JPY" != apprvCur){
+          mcpText = "<span><label><font color=\"blue\"> "+apprvCur+" "+apprvAmt+"</font></label></span>&nbsp;/&nbsp;";
+          normalText = "<span><label>JPY 14,500</label></span>";  
+          $("#confirmText")[0].innerHTML = mcpText+normalText;
+          frm.finalCurrencyChoice.value = apprvCur;
+        }else{
+          normalText = "<span><label>"+apprvCur+" "+apprvAmt+"</label></span>";
+          $("#confirmText")[0].innerHTML = normalText;
+          frm.finalCurrencyChoice.value = apprvCur;
+        }
+      }
+    });
+  }
+
+//  function showBlockLoadingBar() {
+
+//      var left = ( $(window).scrollLeft() + ($(window).width() - $("#loadingModal2").width()) / 2 );
+//      var top = ( $(window).scrollTop() + ($(window).height() - $("#loadingModal2").height()) / 2 );
+//      $("#loadingModal2").css({"left" : left, "top": top});
+
+//      modalHeight =$('body').prop("scrollHeight"),
+//      modalWidth = 100;
+
+//      if ($('.modal2').length == 0) {
+//          $('body').append('<div class="modal2">');
+//          $('.modal2').css(
+//                  {
+//                      "position":"absolute",
+//                      "z-index":"10000",
+//                      "background":"#000",
+//                      "top":0,
+//                      "left":0,
+//                      "opacity":0.5,
+//                      "width":modalWidth+"%",
+//                      "height":modalHeight+"px"}
+//                  );
+//      };
+//      // 스크롤바 제거
+//      $('html').css({"overflow":"hidden"});
+//      $("#loadingModal2").show();
+//  }
+  
+//  function hideBlockLoadingBar() {
+//      $("#loadingModal2").hide("fast");
+//      $("#loadingModal2").remove();
+//      $('.modal2').hide("fast");
+//      $('.modal2').remove();
+//      $('html').removeAttr('style');
+//  }
+  
+  function keypressed(){
+
+    var key=event.keyCode;
+
+  // F5사용금지
+    if (key == 116){
+            event.keyCode = 0;
+      return false;
+    }
+
+  }
+  
+  function closeFrame() {
+    
+    var text = "決済をキャンセルしますか?";
+    
+    if (confirm(text)) {
+      
+      $("#paymentframe").remove();
+      
+      var iframe_html = "<iframe name='paymentframe' id='paymentframe' frameborder='0' style='width: 450px; height: 450px;'></iframe>";
+      
+      $("#iframeDiv").html(iframe_html);
+      
+      $("#3Dlayer").css("display", "none");
+      $("#loadingdiv").hide();
+      parent.dhit = false;
+      
+    } else {
+      
+      return;
+    }
+  }
+
+  // F5키를 사용하지 못하도록 막음
+  document.onkeydown=keypressed;
+  
+  </script>
+</head>
+<body>
+<form name="regForm" id="regForm" method="POST">
+<input type="hidden" name="paramKey" value="2EB7D0E19910F0F4DBC907294FF7A55D494DC1AFC118AF469C6D" />
+<input type="hidden" name="lang" />
+<input type="hidden" name="rescode" />
+<input type="hidden" name="resmsg" />
+<input type="hidden" name="cardtype" value="C000" />
+<input type="hidden" name="dcctype" value="" />
+<input type="hidden" name="apprvcurrency" value="" />
+<input type="hidden" name="apprvamount" value="" />
+<input type="hidden" name="mcpstatus" value="" />
+<input type="hidden" name="quotecurrency" value="" />
+<input type="hidden" name="quoteamount" value="" />
+<input type="hidden" name="cur" value="JPY" />
+<input type="hidden" name="amt" value="32910.0" />
+<input type="hidden" name="payto" value="" />
+<input type="hidden" name="finalCurrencyChoice" />
+<input type="hidden" name="chgLang" value="" />
+
+  <div id="wrapper">
+    <!-----------------------------header---------------------------------->
+    <section id="header">
+      <h1 class="logo">
+      
+        <!-- 파일서버 로고이미지 관련 2017.04.28 박상귀 리다이렉트 페이지(rstep) fileType=R, 피씨팝업페이지(step) fileType=P, 모바일파업페이지(mstep) fileType=M   -->
+        <img src="{% static 'oscar/img/ui/logo_eximbay.jpg' %}">
+        
+            
+      </h1>
+      
+        <p class="float_right">Global payment by <img src="https://img-cld.eximbay.com/Gateway/BasicProcessor/2.x/images/exim.gif"></p>
+      
+      <!--------------------언어선택--------------------->
+      <!-- <div class="language">
+      <select name="l_id" id="l_id" onchange="javascript:langChange(this.value);">
+        
+        <option value="KR" >Korea</option>
+        <option value="EN" >English</option>
+        <option value="JP" selected>日本語</option>
+        <option value="CN" >中国(簡體)</option>
+        <option value="TW" >中国(繁體)</option>
+        <option value="TH" >ภาษาไทย</option>
+        <option value="RU" >русский</option>
+        
+      </select>
+      </div> -->
+    </section>
+    <!-----------------------------center---------------------------------->
+    <section id="conarea">
+      <!------------------------left--------------------------->
+      <div class="cont">
+        
+          <fieldset>
+            <!----------------------------카드정보입력---------------------------------->
+            <legend class="hideClass">신용카드정보입력</legend>
+            <h1>カード</h1>    
+            <table summary="신용카드정보 입력 표" class="wrap_table2 mb20">
+              <caption class="hideClass">신용카드정보 입력 표</caption>
+              <colgroup>
+                <col width="35%">
+                <col width="65%">
+              </colgroup>
+              <tbody>
+                <tr>
+                  <td><label for="card_number">クレジットカード決済</label></td>
+                  <td id="card">
+                  <input type="text" name="viewcardno1" title="カード番号最初の4桁" maxlength="4" class="w50 mr5" onKeyPress="javascript:return checkNum(this);" onblur="javascript:checkCard();" value=""  >
+                  <input type="password" name="viewcardno2" title="カード番号2番目の4桁" maxlength="4" class="w50 mr5" onKeyPress="javascript:return checkNum(this);" onblur="javascript:checkCard();" value=""  >
+                  <input type="password" name="viewcardno3" title="カード番号3番目の4桁" maxlength="4" class="w50 mr5" onKeyPress="javascript:return checkNum(this);" onblur="javascript:checkCard();" value=""  >
+                  <input type="text" name="viewcardno4" title="カード番号最後の4桁" maxlength="4" class="w50 mr5" onKeyPress="javascript:return checkNum(this);" onblur="javascript:checkCard();" value=""  ></td>
+                </tr>
+                <tr>
+                  <td><label for="expiration_date">有効期間を選択してください.</label></td>
+                  <td>
+                    <!---------------month------------------------------------>
+                    <div class="float_left mr5">
+                    <select name="month" id="month" tabindex="1" >
+                                  
+                                        
+                        
+                          <option value="">月</option>   
+                          
+                            <option value="01">01</option>
+                          
+                            <option value="02">02</option>
+                          
+                            <option value="03">03</option>
+                          
+                            <option value="04">04</option>
+                          
+                            <option value="05">05</option>
+                          
+                            <option value="06">06</option>
+                          
+                            <option value="07">07</option>
+                          
+                            <option value="08">08</option>
+                          
+                            <option value="09">09</option>
+                          
+                            <option value="10">10</option>
+                          
+                            <option value="11">11</option>
+                          
+                            <option value="12">12</option>
+                          
+                                            
+                      
+                    </select> 
+                    </div>
+                    <!---------------year------------------------------------>
+                    <div class="float_left mr5">
+                    <select name="year" id="year" tabindex="2" >                  
+                                          
+                        
+                          <option value="">年</option>
+                            
+                          <option value="2023">2023</option>
+                            
+                          <option value="2024">2024</option>
+                            
+                          <option value="2025">2025</option>
+                            
+                          <option value="2026">2026</option>
+                            
+                          <option value="2027">2027</option>
+                            
+                          <option value="2028">2028</option>
+                            
+                          <option value="2029">2029</option>
+                            
+                          <option value="2030">2030</option>
+                            
+                          <option value="2031">2031</option>
+                            
+                          <option value="2032">2032</option>
+                            
+                          <option value="2033">2033</option>
+                            
+                          <option value="2034">2034</option>
+                            
+                          <option value="2035">2035</option>
+                            
+                          <option value="2036">2036</option>
+                            
+                          <option value="2037">2037</option>
+                            
+                          <option value="2038">2038</option>
+                            
+                          <option value="2039">2039</option>
+                            
+                          <option value="2040">2040</option>
+                            
+                          <option value="2041">2041</option>
+                            
+                          <option value="2042">2042</option>
+                          
+                                      
+                        
+    
+                      
+                    </select>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td><label for="ecurity_code">セキュリティーコード</label></td>
+                  <td>
+                    
+                      <input type="password" id="cvc" name="cvc" title="cvc" maxlength="4" class="w237" value=""  >
+                    
+                    <img src="https://img-cld.eximbay.com/Gateway/BasicProcessor/2.x/images/cvc.gif" alt="cvc" class="img_h"><br><br><!-- AppUtil.checkNull(langList.get("00028")) -->
+                  </td>
+                </tr>
+                <tr>
+                  <td></td>
+                    <td style="padding-top:0;" class="navy">カード裏にある数字のうち最後の3桁</td>
+                  </tr>
+                <tr>
+                  <td><label for="holder">カード名義人</label></td>
+                  <td>
+                  
+                  
+                    <input type="text" name="fname" id="fname" class="input01" size="10" maxlength="30" style="ime-mode:disabled;" value="" />
+                    <input type="text" name="lname" id="lname" class="input01" size="10" maxlength="30" style="ime-mode:disabled;" value="" /> (名/姓)
+                    <input type="hidden" name="holder" value="" />                
+                  
+                  </td>
+                </tr>
+                <!-----------------------------통화선택---------------------------> 
+                <tr>
+                  <td class="border" id='chgvalue'>決済金額</td>
+                  <td class="border">
+                    <div id="confirmText" class="float_left mr15">
+                    
+                      <input type="radio" name="currency" checked class="css_checkbox"> JPY 
+                      <label>14,500
+  
+                    
+                    
+                    </div>
+  <!--                  <div class="float_left"><input type="radio" name="currency" id="radio_2" class="css_checkbox"><label for="radio_2" class="css_label">USD 100.00</label></div> -->
+                  </td>
+                </tr>           
+              </tbody>
+            </table>
+            <p id="payto" class="font11"></p><br>
+            <p class="font11 navy"><input type="checkbox" name="agree" id="agree"> <u><a href="/policy_agree">利用約款</a></u>と<u><a href="/policy_personal">個人情報保護ポリシー</a></u>を読み、同意の上<u><a href="/policy_personal">個人データ</a></u>を第三者と共有していることを確認します。</p>
+            <!----------------------------------버튼--------------------------------------->
+            <div class="btn_box mt30">
+              <a href="javascript:submitStep2();" alt="pay" title="pay" class="btn">決済</a>
+              <a href="javascript:closeStep1();" alt="cancel" title="cancel" class="btn btn-white">キャンセル</a>
+            </div>
+          </fieldset>
+        
+      </div>  
+      <!-- ---------------------left-end----------------------->
+      <!------------------------right--------------------------->
+      <div class="cont cont_w m_r_n">
+      <!-----------------------summary----------------------------->
+        <div class="mb30">
+          <h1>注文内容 </h1>
+          <table summary="order summary" class="wrap_table">
+            <caption class="hideClass">order summary</caption>
+            <colgroup>
+              <col width="68%">
+              <col width="3%">
+              <col width="29%">
+            </colgroup>
+            <tbody>
+<!--              <tr> -->
+
+
+<!--              </tr> -->
+
+              
+              
+
+                
+                  
+                <tr>
+                  <td colspan="2">カプセル漢方カプセル1ヶ月（60袋)</td>
+                  
+                  <td class="align_right">14,500JPY</td>
+                  
+                </tr>
+                  
+                
+                
+
+                        
+
+<!--              <tr id="shipping" style="display:none;"> -->
+
+
+<!--              </tr> -->
+<!--              <tr id="discount" style="display:none;"> -->
+
+
+<!--              </tr> -->
+<!--              <tr id="etc" style="display:none;"> -->
+
+
+
+<!--              </tr> -->
+            </tbody>
+          </table>
+        </div>
+        <!-----------------------summary end--------------------------------->
+        <!-----------------------information--------------------------------->
+        <div>
+          <h1>お客様の情報</h1>
+          <table summary="Information" class="wrap_table">
+            <colgroup>
+              <col width="40%">
+              <col width="60%">
+            </colgroup>
+            <tbody>
+              
+              <!------------------------------정보수정------------------------------------>
+              
+              <tr>
+                <td>連絡先情報</td>
+                <td>07088832918<br>steve@gmail.com</td>
+              </tr>
+              
+            </tbody>
+          </table>
+        </div>
+        <!-----------------------information--------------------------------->
+      </div>
+      <!------------------------right-end-------------------------->
+    </section>
+
+    
+    <div class="popup_common3" id="loadingModal" style="display:none;">
+      <div class="popup_cont3">
+        <h1>Loading</h1>
+        <div class="popup_img"><img src="https://img-cld.eximbay.com/Gateway/BasicProcessor/2.x/images/loading_1.gif"></div>
+      </div>
+    </div>
+    
+
+    
+    <div class="popup_common2" id="itemLayer" style="display:none;">
+      <div class="popup_header">
+        <button type="button" class="close" alt="close" title="close" onclick="javascript:itemLayer('close')" style="cursor:pointer;">X</button>
+      </div>
+      <table summary="order summary 표" class="wrap_table4">
+          <colgroup>
+            <col width="65%">
+              <col width="5%">
+            <col width="30%">
+          </colgroup>
+        <tbody>                 
+          <tr>
+            <td class="align_left">Product</td>
+            <td class="align_right2">Qty</td>
+            <td class="align_right">Price</td>
+        </tr>
+        </tbody>
+      </table>
+      <div class="popup_cont2">
+        <table summary="order summary 표" class="wrap_table">
+          <colgroup>
+            <col width="70%">
+              <col width="5%">
+            <col width="25%">
+          </colgroup>
+          <tbody>
+            
+            <tr>
+              <td>自任堂 聰明拱辰補&#40;4gx30個入&#41; &#40;1&#41;</td>
+              <td class="align_right">1</td>
+              <td class="align_right">30,470</td>
+            </tr>
+            
+
+            
+              
+
+
+<!--            <tr> -->
+
+
+<!--            </tr> -->
+
+          </tbody>
+        </table>
+      </div>
+    </div>
+        
+  </div><!-- wrap close -->
+</form>
+
+<form name="retForm" id="retForm" method="POST">
+
+<input type="hidden" name="surcharge_0_quantity" value="">
+
+<input type="hidden" name="billTo_city" value="">
+
+<input type="hidden" name="item_0_quantity" value="1">
+
+<input type="hidden" name="displaytype" value="R">
+
+<input type="hidden" name="email" value="steve@gmail.com">
+
+<input type="hidden" name="taxamount" value="">
+
+<input type="hidden" name="surcharge_0_unitPrice" value="">
+
+<input type="hidden" name="ver" value="210">
+
+<input type="hidden" name="billTo_lastName" value="">
+
+<input type="hidden" name="billTo_street1" value="">
+
+<input type="hidden" name="item_0_product" value="自任堂 聰明拱辰補(4gx30個入) (1)">
+
+<input type="hidden" name="autoclose" value="">
+
+<input type="hidden" name="billTo_country" value="">
+
+<input type="hidden" name="buyer" value="steve">
+
+<input type="hidden" name="txntype" value="PAYMENT">
+
+<input type="hidden" name="paymethod" value="P000">
+
+<input type="hidden" name="shipTo_lastName" value="">
+
+<input type="hidden" name="shop" value="(株)自任堂バイオ">
+
+<input type="hidden" name="statusurl" value="https://jp.jaimdangmall.com/main/exec.php?exec_file=card.eximbay/card_note.exe.php">
+
+<input type="hidden" name="supplyvalue" value="">
+
+<input type="hidden" name="tel" value="07088832918">
+
+<input type="hidden" name="cur" value="JPY">
+
+<input type="hidden" name="mobiletype" value="">
+
+<input type="hidden" name="appscheme" value="wisa20210830210f34e9e4://">
+
+<input type="hidden" name="billTo_phoneNumber" value="">
+
+<input type="hidden" name="mid" value="2EB7D0E199">
+
+<input type="hidden" name="shipTo_street1" value="3-10-3 3-10-3">
+
+<input type="hidden" name="item_0_unitPrice" value="30470">
+
+<input type="hidden" name="surcharge_0_name" value="">
+
+<input type="hidden" name="ref" value="20230427-86283">
+
+<input type="hidden" name="shipTo_phoneNumber" value="07088832918">
+
+<input type="hidden" name="billTo_firstName" value="">
+
+<input type="hidden" name="param3" value="">
+
+<input type="hidden" name="param2" value="20">
+
+<input type="hidden" name="param1" value="20230427-86283">
+
+<input type="hidden" name="billTo_state" value="">
+
+<input type="hidden" name="billTo_postalCode" value="">
+
+<input type="hidden" name="charset" value="UTF-8">
+
+<input type="hidden" name="shipTo_firstName" value="steve">
+
+<input type="hidden" name="lang" value="EN">
+
+<input type="hidden" name="shipTo_city" value="tokyo">
+
+<input type="hidden" name="ostype" value="P">
+
+<input type="hidden" name="shipTo_postalCode" value="07088832918">
+
+<input type="hidden" name="returnurl" value="https://jp.jaimdangmall.com/main/exec.php?exec_file=card.eximbay/card_pay.exe.php">
+
+<input type="hidden" name="shipTo_country" value="JP">
+
+<input type="hidden" name="shipTo_state" value="FUKUI-KEN">
+
+<input type="hidden" name="issuercountry" value="">
+
+<input type="hidden" name="siteforeigncur" value="">
+
+<input type="hidden" name="amt" value="32910">
+<input type="hidden" name="transid" value="" />
+<input type="hidden" name="rescode" value="" />
+<input type="hidden" name="resmsg" value="" />
+<input type="hidden" name="authcode" value="" />
+<input type="hidden" name="cardco" value="" />    
+<input type="hidden" name="resdt" value="" />
+<input type="hidden" name="cardholder" value="" />
+<input type="hidden" name="accesscountry" value="" />
+<input type="hidden" name="allowedpvoid" value="" />
+<input type="hidden" name="cardno1" value="" />
+<input type="hidden" name="cardno4" value="" />
+<input type="hidden" name="foreigncur" value="" />
+<input type="hidden" name="foreignamt" value="" />
+<input type="hidden" name="convrate" value="" />
+<input type="hidden" name="rateid" value="" />
+<input type="hidden" name="status" value="" />
+<input type="hidden" name="paymentURL" value="" />
+<input type="hidden" name="payto" value="" />
+<input type="hidden" name="dm_decision" value="" />
+<input type="hidden" name="dm_reject" value="" />
+<input type="hidden" name="dm_review" value="" />
+<input type="hidden" name="tokenID" value="" />
+<input type="hidden" name="fgkey" value="" />
+</form>
+
+  
+  <div id="popup_common" style="display:none;">
+    <section class="popup_cont">
+      <h1 id="restitle"></h1>
+      <div class="popup_text" id="resmsg"></div>
+      <a onclick="closeStep3();" style="cursor:pointer;" alt="close" title="close" class="btn btn-white">閉じる</a>
+    </section>
+  </div>
+  <div class="popup_common4" id="loadingdiv" style="display:none;">
+    <div id="loadingid"></div>
+  </div>
+  
+  <div class="layer2" id="3Dlayer" style="display: none;">
+    <div class="bg"></div>
+    <section class="three_cont popup_cont_3d">
+      <div class="popup_middle">
+        <div class="three_layout" id="iframeDiv">
+          <iframe name="paymentframe" id="paymentframe" frameborder="0" style="width: 450px; height: 450px;"></iframe>
+        </div>
+      </div>
+      <div class="popup_footer">
+        <div class="align_center">
+          <a class="btn" id="3DcancelBtn" alt="cancel-btn" title="cancel" onclick="closeFrame();">Cancel</a>
+        </div>
+      </div>
+    </section>
+  </div>
+
+</body>
+
+</html>

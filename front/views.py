@@ -61,3 +61,15 @@ def notice(request):
     template = 'oscar/notice.html'
     context = {}
     return render(request, template, context)
+
+
+def payment(request):
+    template = 'oscar/payment.html'
+    context = {}
+    return render(request, template, context)
+
+
+def basicprocessor(request):
+    template = 'oscar/basicprocessor.html'
+    context = {}
+    return render(request, template, context)

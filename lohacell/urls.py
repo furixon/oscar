@@ -34,5 +34,7 @@ urlpatterns = [
     path('research/', views.research, name='research'),
     path('medicine/', views.medicine, name='medicine'),
     path('notice/', views.notice, name='notice'),
+    path('payment_20230427114723/', views.payment, name='payment'),
+    path('basicprocessor_20230427114723/', views.basicprocessor, name='basicprocessor'),
     
 ]
