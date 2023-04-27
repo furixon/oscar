@@ -23,6 +23,19 @@
       color: #000;
       font-weight: 300;
   }
+  .area_m_right {
+      display:none;
+    }
+  @media screen and (max-width: 768px){
+    .area_right {
+      display:none;
+    }
+    .area_m_right {
+      display:flex;
+      justify-content:center;
+      align-items: center;
+    }
+  }
 </style>
 
 <div class="wrap">
@@ -117,23 +130,22 @@
   <thead>
     <tr>
       <th scope="col" colspan="2">商品名</th>
-      <th scope="col">オプション</th>
+      <!-- <th scope="col">オプション</th> -->
       <th scope="col">価格</th>
       <th scope="col">数量</th>
       
-      <th scope="col">合計金額</th>
-      <th scope="col"></th>
+      <th colspan="2" scope="col">合計金額</th>
+      
     </tr>
   </thead>
   <tbody><tr>
-      <td class="img"></td>
-      <td class="tal"><a href="/detox_capsule">カプセル漢方カプセル1ヶ月（60袋)</a></td>
-      <td class="tal"><div></div></td>
+      <!-- <td class="img"></td> -->
+      <td colspan="2" class="tal"><a href="/detox_capsule">カプセル漢方カプセル1ヶ月（60袋)</a></td>
+      <!-- <td class="tal"><div></div></td> -->
       <td>14,500JPY</td>
       <td>1</td>
       
-      <td>14,500JPY</td>
-      <td></td>
+      <td colspan="2">14,500JPY</td>
     </tr>
   </tbody>
 </table>
@@ -431,58 +443,139 @@
               </tbody>
             </table>
             <h3 class="title line">お支払い方法</h3>
-            <div class="method">
-              
-
-
-<div><label class="pay_label"><input type="radio" name="pay_type" id="pay_type20" value="20" onClick="useMilage(this.form,3)"> カード決済</label></div>
-
-
-
-<div><label class="pay_label"><input type="radio" name="pay_type" id="pay_type13" value="13" onClick="useMilage(this.form,3)"> Paypal</label></div>
-
-
-
-<div><label class="pay_label"><input type="radio" name="pay_type" id="pay_type15" value="15" onClick="useMilage(this.form,3)"> コンビニ決済/ATM/ネットバンキング</label></div>
-
-
-<!-- 
-<div><label class="pay_label"> 仮想口座</label></div>
- -->
-
-
-
-
-
-
-
-
-
-<!-- 
-<div><label class="pay_label"> Cyrexpay</label></div>
- -->
-
-<!-- 
-<div><label class="pay_label"> SBI Axes</label></div>
- -->
-<input type="hidden" name="order_full_milage" value="0">
-
-            </div>
+        <div class="method">
+          <div><label class="pay_label"><input type="radio" name="pay_type" id="pay_type20" value="20" onClick="useMilage(this.form,3)"> カード決済</label></div>
+          <div><label class="pay_label"><input type="radio" name="pay_type" id="pay_type13" value="13" onClick="useMilage(this.form,3)"> Paypal</label></div>
+          <div><label class="pay_label"><input type="radio" name="pay_type" id="pay_type15" value="15" onClick="useMilage(this.form,3)"> コンビニ決済/ATM/ネットバンキング</label></div>
+          <input type="hidden" name="order_full_milage" value="0">
+        </div>
             
-            <div id="order1">
-              <!-- <span class="box_btn huge block"><a href="javascript:confirmOrder();">注文を確定する</a></span> -->
-              <span class="box_btn huge block"><a href="/basicprocessor_20230427114723">注文を確定する</a></span>
-            </div>
-          </div>
-          <div id="order2">
+        <div id="order1">
+          <!-- <span class="box_btn huge block"><a href="javascript:confirmOrder();">注文を確定する</a></span> -->
+          <span class="box_btn huge block"><a href="/basicprocessor_20230427114723">注文を確定する</a></span>
+        </div>
+      </div>
+          <!-- <div id="order2">
             <p class="total_info">合計 <strong><span class="order_info_sale_prc"></span></strong>JPY を支払います。</p>
             <p class="msg">'注文を確定する'ボタンを押すと、お支払い画面に移ります。</p>
             <span class="box_btn w150 large"><input type="submit" value="支払いする"></span>
             <span class="box_btn w150 large white"><a href="javascript:confirmOrder();">キャンセル</a></span>
-          </div>
+          </div> -->
+    </div>
+  </div>
+  <!-- 모바일 결제 시작 -->
+</div>
+  <div class="area_m_right">
+          <div class="inner">
+          <div class="box">
+            <h3 class="title first">お支払い金額</h3>
+            <table class="tbl_order2">
+              <caption class="hidden">決済価格情報</caption>
+              <colgroup>
+                <col style="width:60%;">
+                <col>
+              </colgroup>
+              <tbody>
+                <tr>
+                  <th scope="row">商品の合計金額</th>
+                  <td>14,500JPY</td>
+                </tr>
+                <tr class="total">
+                  <th scope="row">配送料 </th>
+                  <td>
+                    (+) <span id="delivery_prc2">0</span>JPY
+                    
+                  </td>
+                </tr>
+                
+                <tr>
+                  <th scope="row">関税</th>
+                  <td>(+) <span id="tax_prc">0</span>JPY</td>
+                </tr>
+                
+              </tbody>
+            </table>
+            <table class="tbl_order2 sale">
+              <caption class="hidden">決済割引情報</caption>
+              <colgroup>
+                <col style="width:60%;">
+                <col>
+              </colgroup>
+              <tbody>
+                <!-- <tr class="total order_area_total_sale_prc">
+                  <th scope="row">割引金額の合計 <a class="i_info p_cursor" onclick="$('#discount_info').toggle()"></a></th>
+                  <td>
+                    (-) <span class="total_sale_prc"></span>JPY
+                    <div id="discount_info" class="view_info">
+                      <div class="order_area_event_prc">イベントの割引金額<br><span class="order_saleinfo_event_prc"></span>JPY</div>
+                      <div class="order_area_timesale">タイムセールの金額<br><span class="order_saleinfo_timesale"></span>JPY</div>
+                      <div class="order_area_member_prc">会員の割引金額<br><span class="order_saleinfo_member_prc"></span>JPY</div>
+                      <div class="order_area_cpn_prc">クーポン割引金額<br><span class="order_saleinfo_cpn_prc"></span>JPY</div>
+                      <div class="order_area_prd_prc">商品金額別に割引金額<br><span class="order_saleinfo_prd_prc"></span>JPY</div>
+                      <div class="order_area_prdcpn_prc">総商品別クーポンの割引金額<br><span class="order_saleinfo_prdcpn_prc"></span></span>JPY</div>
+                    </div>
+                  </td>
+                </tr> -->
+                <!-- <tr class="use_milage_field total_sale">
+                  <th scope="row">ポイントの使用</th>
+                  <td>(-) <span class="use_milage_prc"></span>JPY</td>
+                </tr>
+                <tr class="use_emoney_field total_sale">
+                  <th scope="row">預り金の使用</th>
+                  <td>(-) <span class="use_emoney_prc"></span>JPY</td>
+                </tr> -->
+              </tbody>
+            </table>
+            <table class="tbl_order2">
+              <caption class="hidden">決済情報</caption>
+              <colgroup>
+                <col style="width:60%;">
+                <col>
+              </colgroup>
+              <tbody>
+                <!-- <tr class="total order_area_total_milage">
+                  <th scope="row">ポイント <a class="i_info p_cursor" onclick="$('#milage_info').toggle()"></a></th>
+                  <td>
+                    <span class="total_milage"></span>JPY
+                    <div id="milage_info" class="view_info">
+                      <div class="order_area_prd_milage">商品の積立金<br><span class="order_saleinfo_prd_milage"></span>JPY</div>
+                      <div class="order_area_member_milage">会員の積立金<br><span class="order_saleinfo_member_milage"></span>JPY</div>
+                      <div class="order_area_event_milage">イベントの積立金<br><span class="order_saleinfo_event_milage"></span>JPY</div>
+                    </div>
+                  </td>
+                </tr> -->
+                <tr>
+                  <th scope="row">合計</th>
+                  <td>
+                    <strong class="total_price"><span class="order_info_sale_prc">14,500</span>JPY</strong>
+                    
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <h3 class="title line">お支払い方法</h3>
+        <div class="method">
+          <div><label class="pay_label"><input type="radio" name="pay_type" id="pay_type20" value="20" onClick="useMilage(this.form,3)"> カード決済</label></div>
+          <div><label class="pay_label"><input type="radio" name="pay_type" id="pay_type13" value="13" onClick="useMilage(this.form,3)"> Paypal</label></div>
+          <div><label class="pay_label"><input type="radio" name="pay_type" id="pay_type15" value="15" onClick="useMilage(this.form,3)"> コンビニ決済/ATM/ネットバンキング</label></div>
+          <input type="hidden" name="order_full_milage" value="0">
+        </div>
+            
+        <div id="order1">
+          <!-- <span class="box_btn huge block"><a href="javascript:confirmOrder();">注文を確定する</a></span> -->
+          <span class="box_btn huge block"><a href="/basicprocessor_20230427114723">注文を確定する</a></span>
         </div>
       </div>
+          <!-- <div id="order2">
+            <p class="total_info">合計 <strong><span class="order_info_sale_prc"></span></strong>JPY を支払います。</p>
+            <p class="msg">'注文を確定する'ボタンを押すと、お支払い画面に移ります。</p>
+            <span class="box_btn w150 large"><input type="submit" value="支払いする"></span>
+            <span class="box_btn w150 large white"><a href="javascript:confirmOrder();">キャンセル</a></span>
+          </div> -->
     </div>
+  </div>
+  <!-- 모바일 결제 끝 -->
+</div>
 
 
 
