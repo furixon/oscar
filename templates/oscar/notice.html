@@ -25,16 +25,16 @@
              <li><a href="/event/notice" class="active" >お知らせ</a></li>
          </ul>
     </div>
-          <div class="contents">
+      <div class="contents">
         <div class="notice">
           <div class="notice_top">
             <input type="hidden" id="pageNum" value="2"> 
-            <form method="GET" action="https://jayeon-hanbang.com/event/notice" accept-charset="UTF-8" class="notice_searchform" id="search_form">
+            <!-- <form method="GET" action="https://jayeon-hanbang.com/event/notice" accept-charset="UTF-8" class="notice_searchform" id="search_form">
               <fieldset>
                    <legend>検索</legend>
                    <input type="text" name="s_kw01" id="s_kw01" placeholder="検索語を入力してください" class="search" value="">
                    <button type="submit" class="searchicon"><img src="https://i.gr-tn.co.kr/jayeon_2020/images/searchicon.png" alt=""></button>
-               </fieldset>
+               </fieldset> -->
              </form>
            </div>
            <div class="notice_list">
@@ -44,27 +44,44 @@
                    <dt class="num">番号</dt>
                    <dt class="name">タイトル</dt>
                    <dt class="date">作成日</dt>
-                   <dt class="hitnum">照会</dt>
+                   
                  </dl>
                </li>
+               {% for notice in notices %}
                <li class="noti_lst row_al">
                  <a href="/event/notice/163">
                    <dl class="table_row">
-                     <dd class="num">1</dd>
+                     <dd class="num">{{notice.index_no}}</dd>
                      <dd class="name">
-                       <span class="mo_name">ロハセル韓医院サービスオープン</span>
-                       <span class="mo_date">作成日 21.12.10</span><span class="mo_hit">閲覧 7</span>
+                       <span class="mo_name">{{notice.notice_content}}</span>
+                       <span class="mo_date">{{notice.reg_date}}</span><span class="mo_hit">閲覧 7</span>
                      </dd>
-                     <dd class="date">23.03.21</dd>
-                     <dd class="hitnum">7</dd>
+                     <dd class="date">{{notice.reg_date|date:'Y.m.d'}}</dd>
+                     
                    </dl>
                  </a>
                </li>
-
-                           </ul>
+               {% endfor %}
+            </ul>
           </div>
         </div>
         <div class="pc_paging">
+          <ul>
+          {% if notices.has_previous %}
+          <a href="?page={{notices.previous_page_number}}"><</a>
+          {% endif %}
+          {% for page in notices.paginator.page_range %}
+          <li>
+            <a href="?page={{page}}">{{page}}</a>
+          </li>
+          {% endfor %}
+          {% if notices.has_next %}
+          <a class="pc_next" href="?page={{notices.next_page_number}}">></a>
+          <!-- <a href="?page={{notices.paginator.num_pages}}">END</a> -->
+          {% endif %}
+          </ul>
+        </div>
+        <!-- <div class="pc_paging">
           <ul>
                                                                                   
                 <li>
@@ -75,7 +92,7 @@
         </div>
         <div class="mo_paging">
           <a href="javascript:void(0);" onclick="nextPageLoad();" id="addBtn" class="more">더보기</a>
-        </div>
+        </div> -->
       </div>
     </div>
   </div>

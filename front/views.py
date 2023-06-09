@@ -1,5 +1,6 @@
 from django.shortcuts import render
-
+from django.core.paginator import Paginator
+from .models import *
 # Create your views here.
 
 
@@ -58,8 +59,12 @@ def medicine(request):
 
 
 def notice(request):
+    notices = Notice.objects.all().order_by('-reg_date')
+    paginator = Paginator(notices, 2)
+    page = request.GET.get('page')
+    notices_page = paginator.get_page(page)
     template = 'oscar/notice.html'
-    context = {}
+    context = {'notices': notices_page}
     return render(request, template, context)
 
 
